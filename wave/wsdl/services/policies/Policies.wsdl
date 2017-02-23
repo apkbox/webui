@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="Policies"
+                  targetNamespace="http://schemas.oce.com/ws/wave/policies"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wsswssecurity-utility-1.0.xsd"
+                  xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization">
+
+    <wsp:Policy Name="http://schemas.oce.com/ws/wave/policies/MTOM">
+        <wsoma:OptimizedMimeSerialization/>
+    </wsp:Policy>
+
+</wsdl:definitions>
+
+
+
+
+

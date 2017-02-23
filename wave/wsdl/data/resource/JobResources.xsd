@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <xsd:include schemaLocation="MarkerSupplyAmountUnitWKV.xsd"/>
+    <xsd:include schemaLocation="MarkerSupplyColorantWKV.xsd"/>
+            
+    <xsd:complexType name="JobResources">
+        <xsd:annotation>
+            <xsd:documentation>
+                The resources consumed by a job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="markerSuppliesConsumed" type="tns:ResourceMarkerSupplies" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="markerSuppliesNeeded" type="tns:ResourceMarkerSupplies" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobResources" type="tns:JobResources"/>
+    
+    <xsd:complexType name="ResourceMarkerSupplies">
+        <xsd:annotation>
+            <xsd:documentation>
+                The resources consumed by a job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:resourceMarkerSupply" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="amountUnit" type="tns:MarkerSupplyAmountUnit" use="required"/>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ResourceMarkerSupply">
+        <xsd:annotation>
+            <xsd:documentation>
+                One resource consumed by a job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="colorant" type="tns:MarkerSupplyColorant" use="required" />
+        <xsd:attribute name="amount" type="xsd:int" use="required" />
+    </xsd:complexType>
+    <xsd:element name="resourceMarkerSupply" type="tns:ResourceMarkerSupply"/>
+    
+    <xsd:simpleType name="MarkerSupplyAmountUnit">
+        <xsd:annotation>
+            <xsd:documentation>
+                The measure unit of marker supplies.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:union memberTypes="xsd:NMTOKEN tns:MarkerSupplyAmountUnitWKV"/>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="MarkerSupplyColorant">
+        <xsd:annotation>
+            <xsd:documentation>
+                The colorant of marker supplies.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:union memberTypes="xsd:NMTOKEN tns:MarkerSupplyColorantWKV"/>
+    </xsd:simpleType>
+</xsd:schema>

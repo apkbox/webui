@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of media series -->
+    <xsd:simpleType name="MediaSeriesWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The enumeration of well known values for the media series
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="ISO-A">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The ISO-A media series.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ISO-SRA">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The ISO-SRA media series
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Untrimmed-A">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The Untrimmed-A media series
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ISO-B">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The ISO-B media series
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Carto-B">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The Carto-B media series
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Poster">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The Carto-B media series
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ANSI">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The ANSI media series
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ARCH">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The ARCH media series
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ARCH1">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The ARCH1 media series
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        An other media series
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
+

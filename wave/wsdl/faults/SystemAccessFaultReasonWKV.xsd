@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/faults"
+            xmlns:tns="http://schemas.oce.com/ws/wave/faults"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of system access fault reasons -->
+    <xsd:simpleType name="SystemAccessFaultReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values of the reasons why a system access management operation was denied.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="SystemNotLocked">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is not locked, and therefore cannot be unlocked.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="SystemNotUnlocked">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is not unlocked, and therefore cannot be locked.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="FunctionNotSupported">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A system function specified by the service requester is not supported.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The operation was denied for another reason.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

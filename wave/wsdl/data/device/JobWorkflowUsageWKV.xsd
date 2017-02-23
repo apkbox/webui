@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- enumeration of job workflow usages -->
+    <xsd:simpleType name="JobWorkflowUsageWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                An enumeration of well known job workflow usages.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Mandatory">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The usage of the job workflow is mandatory.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Optional">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The usage of the job workflow is optional.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

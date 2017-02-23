@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/services/system/access/management"
+            xmlns:tns="http://schemas.oce.com/ws/wave/services/system/access/management"
+            xmlns:client="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:system="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:import schemaLocation="../../../../data/client/ClientElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/client"/>
+
+    <xsd:import schemaLocation="../../../../data/system/SystemElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/system"/>
+
+    <!-- get the elements of the access to the imaging system -->
+    <xsd:complexType name="GetSystemAccessElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the elements of the access to the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getSystemAccessElementsRequest" type="tns:GetSystemAccessElementsRequest"/>
+
+    <xsd:complexType name="GetSystemAccessElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the elements of the access to the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="system:systemAccess"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getSystemAccessElementsResponse" type="tns:GetSystemAccessElementsResponse"/>
+
+    <!-- get the updated elements of the access to the imaging system -->
+    <xsd:complexType name="GetSystemAccessUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updated elements of the access to the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getSystemAccessUpdatesRequest" type="tns:GetSystemAccessUpdatesRequest"/>
+
+    <xsd:complexType name="GetSystemAccessUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the updated elements of the access to the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="system:systemAccess" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getSystemAccessUpdatesResponse" type="tns:GetSystemAccessUpdatesResponse"/>
+
+    <!-- the request to get an exclusive access to the imaging system -->
+    <xsd:complexType name="RequestSystemAccessRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get an exclusive access to the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="system:systemFunctions" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="requestSystemAccessRequest" type="tns:RequestSystemAccessRequest"/>
+
+    <xsd:complexType name="RequestSystemAccessResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the request-system-access operation.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="system:systemAccessStatus"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="requestSystemAccessResponse" type="tns:RequestSystemAccessResponse"/>
+
+    <!-- the request to release an exclusive access to the imaging system -->
+    <xsd:complexType name="ReleaseSystemAccessRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to release an exclusive access to the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="releaseSystemAccessRequest" type="tns:ReleaseSystemAccessRequest"/>
+
+    <xsd:complexType name="ReleaseSystemAccessResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the release-system-access operation.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="system:systemAccessStatus"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="releaseSystemAccessResponse" type="tns:ReleaseSystemAccessResponse"/>
+
+</xsd:schema>

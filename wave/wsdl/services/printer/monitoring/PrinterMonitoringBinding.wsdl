@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="PrinterMonitoringBinding"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/printer/monitoring"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/printer/monitoring"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:documentation>Printer monitoring binding - version 1.2</wsdl:documentation>
+
+    <wsdl:import location="PrinterMonitoringPort.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/printer/monitoring"/>
+
+    <wsdl:binding name="PrinterMonitoringBinding" type="tns:PrinterMonitoringPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="getMediaCatalogElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getMediaCatalogElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMediaCatalogUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getMediaCatalogUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getPrinterElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getPrinterElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getPrinterUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getPrinterUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMediaFeederElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getMediaFeederElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMediaFeederUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getMediaFeederUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMarkerFeederElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getMarkerFeederElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMarkerFeederUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getMarkerFeederUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMarkerElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getMarkerElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMarkerUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getMarkerUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getFinishingElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getFinishingElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getFinishingUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getFinishingUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getDeliveringElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getDeliveringElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getDeliveringUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/printer/monitoring/getDeliveringUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+</wsdl:definitions>

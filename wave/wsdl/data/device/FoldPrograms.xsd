@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../job/Directives.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+
+    <!-- a list of fold programs -->
+    <xsd:complexType name="FoldPrograms">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of fold programs supported by a finisher unit - only pertinent to a folder.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:foldProgram" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="foldPrograms" type="tns:FoldPrograms"/>
+
+    <!-- a fold program -->
+    <xsd:complexType name="FoldProgram">
+        <xsd:annotation>
+            <xsd:documentation>
+                The definition of a fold program.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:foldProgramName"/>
+            <xsd:element ref="tns:foldProgramDirectives"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="foldProgram" type="tns:FoldProgram"/>
+
+    <!-- a list of directives for a fold program -->
+    <xsd:complexType name="FoldProgramDirectives">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of fold directives pertinent to a fold program.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:setting" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="foldProgramDirectives" type="tns:FoldProgramDirectives"/>
+
+    <!-- the name of a fold program -->
+    <xsd:element name="foldProgramName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of a fold program, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

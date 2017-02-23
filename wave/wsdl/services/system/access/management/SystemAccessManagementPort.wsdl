@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="SystemAccessManagementPort"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/system/access/management"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/system/access/management"
+                  xmlns:faults="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:import location="../../../../faults/Faults.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/faults"/>
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="SystemAccessManagementMessages.xsd"
+                        namespace="http://schemas.oce.com/ws/wave/services/system/access/management"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="getSystemAccessElementsRequest">
+        <wsdl:part name="request" element="tns:getSystemAccessElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getSystemAccessElementsResponse">
+        <wsdl:part name="response" element="tns:getSystemAccessElementsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="getSystemAccessUpdatesRequest">
+        <wsdl:part name="request" element="tns:getSystemAccessUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getSystemAccessUpdatesResponse">
+        <wsdl:part name="response" element="tns:getSystemAccessUpdatesResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="requestSystemAccessRequest">
+        <wsdl:part name="request" element="tns:requestSystemAccessRequest"/>
+    </wsdl:message>
+    <wsdl:message name="requestSystemAccessResponse">
+        <wsdl:part name="response" element="tns:requestSystemAccessResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="releaseSystemAccessRequest">
+        <wsdl:part name="request" element="tns:releaseSystemAccessRequest"/>
+    </wsdl:message>
+    <wsdl:message name="releaseSystemAccessResponse">
+        <wsdl:part name="response" element="tns:releaseSystemAccessResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="SystemAccessManagementPort">
+        <wsdl:operation name="getSystemAccessElements">
+            <wsdl:input message="tns:getSystemAccessElementsRequest"/>
+            <wsdl:output message="tns:getSystemAccessElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getSystemAccessUpdates">
+            <wsdl:input message="tns:getSystemAccessUpdatesRequest"/>
+            <wsdl:output message="tns:getSystemAccessUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="requestSystemAccess">
+            <wsdl:input message="tns:requestSystemAccessRequest"/>
+            <wsdl:output message="tns:requestSystemAccessResponse"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="systemAccessFault" message="faults:systemAccessFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="releaseSystemAccess">
+            <wsdl:input message="tns:releaseSystemAccessRequest"/>
+            <wsdl:output message="tns:releaseSystemAccessResponse"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="systemAccessFault" message="faults:systemAccessFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+</wsdl:definitions>

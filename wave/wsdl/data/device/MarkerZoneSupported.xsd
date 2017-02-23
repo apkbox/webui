@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <!-- description of the printer marker unit -->
+    <xsd:complexType name="MarkerZoneSupported">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of the printer marker zones.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerZone" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerZoneSupported" type="tns:MarkerZoneSupported"/>
+
+    <xsd:complexType name="MarkerZone">
+        <xsd:annotation>
+            <xsd:documentation>
+                The size of the printer marker zone.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerSurface" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerZone" type="tns:MarkerZone"/>
+
+    <xsd:complexType name="MarkerSurface">
+        <xsd:annotation>
+            <xsd:documentation>
+                The definition of a marker zone.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="width" type="xsd:int" use="required" />
+        <xsd:attribute name="height" type="xsd:int" use="required" />
+        <xsd:attribute name="offsetX" type="xsd:int" use="required" />
+        <xsd:attribute name="offsetY" type="xsd:int" use="required" />
+    </xsd:complexType>
+    <xsd:element name="markerSurface" type="tns:MarkerSurface"/>
+
+</xsd:schema>

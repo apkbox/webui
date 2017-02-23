@@ -1,0 +1,81 @@
+doctype html
+html
+  head
+    title= title
+    meta(http-equiv='Content-Type', content="text/html;charset=utf-8")
+    meta(charset="UTF-8")
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/jquery-ui.min.js')
+    script(src='/javascripts/simpleUpload.min.js')
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/stylesheets/jquery-ui.min.css")
+    link(rel="stylesheet", href="/stylesheets/jquery-ui.structure.min.css")
+    link(rel="stylesheet", href="/stylesheets/jquery-ui.theme.min.css")
+  body
+    div(style='width: 960px; margin-left: auto; margin-right: auto')
+      div.header
+        div.header-printer-model= computer_name
+      div#container
+        ul#menu
+          li
+            a#idHomeLink(href='#idHomePage')
+              | Status
+          li
+            a#idUpdateSoftwareLink(href='#idUpdateSoftwarePage')
+              | Update Software
+          li
+            a#idDownloadSettingsLink(href='#idDownloadSettingsPage')
+              | Settings
+          li
+            a#idDownloadLogsLink(href='#idDownloadLogsPage')
+              | Logs
+        div#idHomePage
+          p Printer model: #{make_and_model}
+          p Software version: #{software_version}
+          p Serial number: #{serial_number}
+          p Status: N/A
+        div#idUpdateSoftwarePage
+          p Update software
+          input#uploadSoftware(type="file" name="file")
+          table(border=1)
+            tr
+              th Update package
+              th Version
+            //- condition to make Pug to HTML happy
+            if available_packages
+              each e in available_packages
+                tr
+                  td=e.getFileName()
+                  td=e.getVersion()
+        div#idDownloadSettingsPage
+          p Download settings
+        div#idDownloadLogsPage
+          p Download logs
+    script.
+      function render() {
+        $('#container').tabs();
+        $('input#uploadSoftware[type=file]').change(function() {
+          $(this).simpleUpload("/upload", {
+              start: function(file) {
+                //upload started
+                console.log("upload started");
+              },
+              progress: function(progress) {
+                //received progress
+                console.log("upload progress: " + Math.round(progress) + "%");
+              },
+              success: function(data) {
+                //upload successful
+                console.log("upload successful!");
+                console.log(data);
+              },
+              error: function(error) {
+                //upload failed
+                console.log("upload error: " + error.name + ": " + error.message);
+                }
+          });
+        });
+      }
+
+      $(document).ready(render);
+      

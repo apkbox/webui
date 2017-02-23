@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/faults"
+            xmlns:tns="http://schemas.oce.com/ws/wave/faults"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of Well Known Values for the job management fault reason -->
+    <xsd:simpleType name="JobManagementFaultReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known reasons why a job management request has failed.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="JobNotFound">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The specified job could not be found in the imaging system.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobNotEligibleForOperation">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The specified job is not eligible for the specified operation.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="OperationNotSupported">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The specified operation is not supported by the imaging system.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job management request was denied for another reason.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

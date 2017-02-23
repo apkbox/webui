@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of marker feeder types -->
+    <xsd:simpleType name="MarkerFeederTypeWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known marker feeder types.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="SolidMarkerSupplyFeeder">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The marker feeder unit contains a solid marker supply.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="LiquidMarkerSupplyFeeder">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The marker feeder unit contains a liquid marker supply.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

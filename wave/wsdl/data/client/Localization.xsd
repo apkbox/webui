@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:element name="localization" type="xsd:language">
+        <xsd:annotation>
+            <xsd:documentation>
+                The language and the country to be used when reporting a textual information.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    
+</xsd:schema>

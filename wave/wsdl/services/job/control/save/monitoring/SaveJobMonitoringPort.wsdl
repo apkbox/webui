@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="SaveJobMonitoringPort"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring"
+                  xmlns:faults="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:import location="../../../../../faults/Faults.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/faults"/>
+
+    <wsdl:types>
+        <xsd:schema>                        
+            <xsd:import schemaLocation="SaveJobMonitoringMessages.xsd"
+                        namespace="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="getJobRepositoryElementsRequest">
+        <wsdl:part name="request" element="tns:getJobRepositoryElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getJobRepositoryElementsResponse">
+        <wsdl:part name="response" element="tns:getJobRepositoryElementsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="getJobRepositoryUpdatesRequest">
+        <wsdl:part name="request" element="tns:getJobRepositoryUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getJobRepositoryUpdatesResponse">
+        <wsdl:part name="response" element="tns:getJobRepositoryUpdatesResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="lookupJobRequest">
+        <wsdl:part name="request" element="tns:lookupJobRequest"/>
+    </wsdl:message>
+    <wsdl:message name="lookupJobResponse">
+        <wsdl:part name="response" element="tns:lookupJobResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="getJobsRequest">
+        <wsdl:part name="request" element="tns:getJobsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getJobsResponse">
+        <wsdl:part name="response" element="tns:getJobsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="getJobsInContainerRequest">
+        <wsdl:part name="request" element="tns:getJobsInContainerRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getJobsInContainerResponse">
+        <wsdl:part name="response" element="tns:getJobsInContainerResponse"/>
+    </wsdl:message>
+    
+    <wsdl:portType name="SaveJobMonitoringPort">
+        <wsdl:operation name="getJobRepositoryElements">
+            <wsdl:input message="tns:getJobRepositoryElementsRequest"/>
+            <wsdl:output message="tns:getJobRepositoryElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="getJobRepositoryUpdates">
+            <wsdl:input message="tns:getJobRepositoryUpdatesRequest"/>
+            <wsdl:output message="tns:getJobRepositoryUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="lookupJob">
+            <wsdl:input message="tns:lookupJobRequest"/>
+            <wsdl:output message="tns:lookupJobResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getJobs">
+            <wsdl:input message="tns:getJobsRequest"/>
+            <wsdl:output message="tns:getJobsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getJobsInContainer">
+            <wsdl:input message="tns:getJobsInContainerRequest"/>
+            <wsdl:output message="tns:getJobsInContainerResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+        
+</wsdl:definitions>

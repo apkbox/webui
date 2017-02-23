@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="JobDownloadPort"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/download"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/download"
+                  xmlns:faults="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:import location="../../../faults/Faults.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/faults"/>
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="JobDownloadMessages.xsd"
+                        namespace="http://schemas.oce.com/ws/wave/services/job/download"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="lookupJobRequest">
+        <wsdl:part name="request" element="tns:lookupJobRequest"/>
+    </wsdl:message>
+    <wsdl:message name="lookupJobResponse">
+        <wsdl:part name="response" element="tns:lookupJobResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="openJobDownloadSessionRequest">
+        <wsdl:part name="request" element="tns:openJobDownloadSessionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="openJobDownloadSessionResponse">
+        <wsdl:part name="response" element="tns:openJobDownloadSessionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="pullDocumentDataRequest">
+        <wsdl:part name="request" element="tns:pullDocumentDataRequest"/>
+    </wsdl:message>
+    <wsdl:message name="pullDocumentDataResponse">
+        <wsdl:part name="response" element="tns:pullDocumentDataResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="pullDocumentDataDeliveredRequest">
+        <wsdl:part name="request" element="tns:pullDocumentDataDeliveredRequest"/>
+    </wsdl:message>
+    <wsdl:message name="pullDocumentDataDeliveredResponse">
+        <wsdl:part name="response" element="tns:pullDocumentDataDeliveredResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="closeJobDownloadSessionRequest">
+        <wsdl:part name="request" element="tns:closeJobDownloadSessionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="closeJobDownloadSessionResponse">
+        <wsdl:part name="response" element="tns:closeJobDownloadSessionResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="JobDownloadPort">
+        <wsdl:operation name="lookupJob">
+            <wsdl:input message="tns:lookupJobRequest"/>
+            <wsdl:output message="tns:lookupJobResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="openJobDownloadSession">
+            <wsdl:input message="tns:openJobDownloadSessionRequest"/>
+            <wsdl:output message="tns:openJobDownloadSessionResponse"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="jobDownloadFault" message="faults:jobDownloadFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="pullDocumentData">
+            <wsdl:input message="tns:pullDocumentDataRequest"/>
+            <wsdl:output message="tns:pullDocumentDataResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="jobDownloadFault" message="faults:jobDownloadFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="pullDocumentDataDelivered">
+            <wsdl:input message="tns:pullDocumentDataDeliveredRequest"/>
+            <wsdl:output message="tns:pullDocumentDataDeliveredResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="jobDownloadFault" message="faults:jobDownloadFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="closeJobDownloadSession">
+            <wsdl:input message="tns:closeJobDownloadSessionRequest"/>
+            <wsdl:output message="tns:closeJobDownloadSessionResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="jobDownloadFault" message="faults:jobDownloadFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+</wsdl:definitions>

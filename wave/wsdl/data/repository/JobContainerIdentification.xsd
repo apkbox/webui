@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- name of a job container -->
+    <xsd:element name="containerName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of a job container The name is unique in the job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:attribute name="containerName" type="xsd:string"/>
+
+</xsd:schema>

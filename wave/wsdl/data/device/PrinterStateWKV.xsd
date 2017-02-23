@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of printer states -->
+    <xsd:simpleType name="PrinterStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known states for a printer.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Idle">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is idle.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Processing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is processing one or more print jobs.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Stopped">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is stopped. It may require user attention.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- enumeration of printer state reasons -->
+    <xsd:simpleType name="PrinterStateReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of well known reasons about the printer state.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Initializing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is initializing, and it cannot accept new jobs yet - the printer state is Idle.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Ready">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is ready to accept new jobs - the printer state is Idle.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Sleeping">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is sleeping (suspended to RAM or to Disk) - the printer state is Idle.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Transforming">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is transforming a job into some digital form - the printer state is Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Printing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is printing a job - the printer state is Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Paused">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer queue has been put on hold - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Shutdown">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is preparing for a shutdown - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Maintenance">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is in maintenance, and it cannot accept jobs - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MediaNeeded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer needs some media supply to print a job - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MediaJam">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is blocked because of a media jam - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MarkerSupplyNeeded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer needs some marker supply to print a job - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MarkerWasteFull">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is blocked because a marker supply waste is full - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="OutputAreaFull">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is blocked because an output delivery is full - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="DoorOpen">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is blocked because a door is opened - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="SpoolAreaFull">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is blocked because the spool area is full - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is blocked for an unknown reason - the printer state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="CleaningMarkerUnit">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is cleaning its marker units - the printer state is Idle or Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="CalibratingMarkerUnit">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is calibrating its marker units - the printer state is Idle or Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="LoadingMedia">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is loading a media supply - the printer state is Idle or Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="WarmingUp">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is warming up - the printer state is Idle or Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="SavingEnergy">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is saving energy (low power mode) - the printer state is Idle or Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MediaLow">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is getting low in some media supply - not related to any printer state.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MediaEmpty">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer has gone short of some media supply - not related to any printer state.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MarkerSupplyLow">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is getting low in some marker supply - not related to any printer state.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MarkerSupplyEmpty">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer has gone short of some marker supply - not related to any printer state.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MarkerWasteAlmostFull">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is getting low in marker waste capacity - not related to any printer state.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="OutputAreaAlmostFull">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is getting low in output delivery capacity - not related to any printer state.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="FuserUnderTemp">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer is warming up its marker units - not related to any printer state.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

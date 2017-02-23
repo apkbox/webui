@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="PrinterMonitoringService"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/printer/monitoring"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/printer/monitoring"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:import location="services/printer/monitoring/PrinterMonitoringBinding.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/printer/monitoring"/>
+
+    <wsdl:service name="PrinterMonitoringService">
+        <wsdl:port name="PrinterMonitoringPort" binding="tns:PrinterMonitoringBinding">
+            <soap:address location="http://localhost/eip/wave/PrinterMonitoringService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

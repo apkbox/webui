@@ -1,0 +1,6 @@
+<providerVersion xmlns="http://schemas.oce.com/ws/wave/data/version"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="version.xsd">
+	<!-- The current version of the interfaces implemented by the service provider -->
+	<interfaceVersion>1.4</interfaceVersion>
+</providerVersion>

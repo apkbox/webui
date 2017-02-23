@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of output tray types -->
+    <xsd:simpleType name="OutputTrayTypeWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known output tray types.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="IRT">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is an Integrated Receiving Tray.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="TDT">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is a Top Delivery Tray.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="CDT">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is a Copy Delivery Tray.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ExternalOutput">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is the external output of the printer.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="CrossFoldOutput">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is the cross fold output of the folder.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="FanFoldOutput">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is the fan fold output of the folder.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Another type of output tray.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

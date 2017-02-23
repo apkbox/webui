@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://schemas.oce.com/ws/wave/data/common"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../common/CommonElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/common"/>
+                
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MediaFeederDescription.xsd"/>
+    <xsd:include schemaLocation="MediaFeederStatus.xsd"/>
+
+    <!-- a list of media feeder units -->
+    <xsd:complexType name="MediaFeederUnits">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of media feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaFeeder" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="unitCount" type="xsd:int" use="required"/>
+        <xsd:attribute ref="common:reportedElements" use="optional"/>
+    </xsd:complexType>
+    <xsd:element name="mediaFeederUnits" type="tns:MediaFeederUnits"/>
+
+    <!-- a media feeder unit -->
+    <xsd:complexType name="MediaFeeder">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a media feeder unit. A media feeder unit feeds the print device with some media
+                supplies.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaFeederDescription" minOccurs="0"/>
+            <xsd:element ref="tns:mediaFeederStatus" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="unitNumber" type="xsd:int" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="mediaFeeder" type="tns:MediaFeeder"/>
+
+</xsd:schema>

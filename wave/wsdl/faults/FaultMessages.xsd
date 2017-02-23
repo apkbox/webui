@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/faults"
+            xmlns:tns="http://schemas.oce.com/ws/wave/faults"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="AccessDeniedFaultReasonWKV.xsd"/>
+    <xsd:include schemaLocation="SessionDeniedFaultReasonWKV.xsd"/>
+    <xsd:include schemaLocation="JobDownloadFaultReasonWKV.xsd"/>
+    <xsd:include schemaLocation="JobManagementFaultReasonWKV.xsd"/>
+    <xsd:include schemaLocation="SystemAccessFaultReasonWKV.xsd"/>
+
+    <!-- access denied -->
+    <xsd:complexType name="AccessDeniedFaultInfo">
+        <xsd:annotation>
+            <xsd:documentation>
+                The message that is returned when the remote client is not granted the rights to access a service.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:accessDeniedFaultReason"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="accessDeniedFaultInfo" type="tns:AccessDeniedFaultInfo"/>
+
+    <xsd:element name="accessDeniedFaultReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reason why the access was denied.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:AccessDeniedFaultReasonWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:complexType name="SessionDeniedFaultInfo">
+        <xsd:annotation>
+            <xsd:documentation>
+                The message that is returned to the service requester when an operation was denied in the context
+                of a client session for some reason.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:sessionDeniedFaultReason"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="sessionDeniedFaultInfo" type="tns:SessionDeniedFaultInfo"/>
+
+    <xsd:element name="sessionDeniedFaultReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reason why the session was denied.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:SessionDeniedFaultReasonWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:complexType name="JobDownloadFaultInfo">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of the job-download fault.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobDownloadFaultReason"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobDownloadFaultInfo" type="tns:JobDownloadFaultInfo"/>
+
+    <xsd:element name="jobDownloadFaultReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reason why the job download has failed.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:JobDownloadFaultReasonWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:complexType name="JobManagementFaultInfo">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of the job-management fault
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobManagementFaultReason"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobManagementFaultInfo" type="tns:JobManagementFaultInfo"/>
+
+    <xsd:element name="jobManagementFaultReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reason why a job management request has failed.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:JobManagementFaultReasonWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:complexType name="SystemAccessFaultInfo">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of a system-access-management fault
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:systemAccessFaultReason"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="systemAccessFaultInfo" type="tns:SystemAccessFaultInfo"/>
+
+    <xsd:element name="systemAccessFaultReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reason why a system access management operation has failed.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:SystemAccessFaultReasonWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+</xsd:schema>

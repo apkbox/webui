@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="SystemFunctionWKV.xsd"/>
+
+    <!-- list of system functions -->
+    <xsd:complexType name="SystemFunctions">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of system functions
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:systemFunction" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="systemFunctions" type="tns:SystemFunctions"/>
+    <xsd:element name="systemFunctionSupported" type="tns:SystemFunctions"/>
+    <xsd:element name="unlockedSystemFunctions" type="tns:SystemFunctions"/>
+
+    <xsd:element name="systemFunction">
+        <xsd:annotation>
+            <xsd:documentation>
+                A function of the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:SystemFunctionWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+</xsd:schema>

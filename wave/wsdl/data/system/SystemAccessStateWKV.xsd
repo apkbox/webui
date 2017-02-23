@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:simpleType name="SystemAccessStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values of the system access state.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="AccessFree">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The access to the imaging system is free.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="AccessLocked">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The access to the imaging system is locked.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="UnlockingAccess">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The access to the imaging is being unlocked.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Unlocked">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The access to the imaging system is unlocked.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="LockingAccess">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The access to the imaging system is being locked.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

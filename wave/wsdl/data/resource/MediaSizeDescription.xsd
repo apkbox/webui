@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MediaSeriesWKV.xsd"/>
+
+    <!-- description of a roll size -->
+    <xsd:complexType name="RollSizeDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of a roll size (name, width, and media series).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaSizeName"/>
+            <xsd:element ref="tns:mediaWidth"/>
+            <xsd:element ref="tns:mediaSeries"/>
+            <xsd:element ref="tns:mediaSizeKey"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="rollSizeDescription" type="tns:RollSizeDescription"/>
+
+    <!-- description of a sheet size -->
+    <xsd:complexType name="SheetSizeDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of a sheet size (name, width, height, and media series).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaSizeName"/>
+            <xsd:element ref="tns:mediaWidth"/>
+            <xsd:element ref="tns:mediaHeight"/>
+            <xsd:element ref="tns:mediaSeries"/>
+            <xsd:element ref="tns:mediaSizeKey"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="sheetSizeDescription" type="tns:SheetSizeDescription"/>
+
+    <xsd:element name="mediaSizeName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of the media size, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaWidth" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The width of a media, in 1/100 mm. When the media is a cut sheet, the media width is the media short
+                edge. When the media is a continuous roll, the media width is the roll width.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaHeight" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The height of a media, in 1/100 mm. When the media is a cut sheet, the media height is the media long
+                edge. When the media is a continuous roll, the media height is not used.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaSeries">
+        <xsd:annotation>
+            <xsd:documentation>
+                The media series (ISO, ANSI, etc...)
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:MediaSeriesWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="mediaSizeKey" type="xsd:NMTOKEN">
+        <xsd:annotation>
+            <xsd:documentation>
+                The key of the media size. It can be used as an alias to a media size in a processing instruction.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

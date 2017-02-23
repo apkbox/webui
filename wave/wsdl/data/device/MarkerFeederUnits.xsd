@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://schemas.oce.com/ws/wave/data/common"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../common/CommonElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/common"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MarkerFeederDescription.xsd"/>
+    <xsd:include schemaLocation="MarkerFeederStatus.xsd"/>
+
+    <!-- a list of marker feeder units -->
+    <xsd:complexType name="MarkerFeederUnits">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of marker feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerFeeder" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="unitCount" type="xsd:int" use="required"/>
+        <xsd:attribute ref="common:reportedElements" use="optional"/>
+    </xsd:complexType>
+    <xsd:element name="markerFeederUnits" type="tns:MarkerFeederUnits"/>
+
+    <!-- a marker feeder unit -->
+    <xsd:complexType name="MarkerFeeder">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a marker feeder unit. A marker feeder unit feeds the print device with some marker
+                supply.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerFeederDescription" minOccurs="0"/>
+            <xsd:element ref="tns:markerFeederStatus" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="unitNumber" type="xsd:int" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="markerFeeder" type="tns:MarkerFeeder"/>
+
+</xsd:schema>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:simpleType name="SystemStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values of the imaging system state.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            
+            <xsd:enumeration value="Initializing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is initializing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Running">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is up and running.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Down">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is down and requires a user intervention.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Error">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is in error and must be rebooted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Stopping">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is stopping (shutdown, reboot, or going to sleep).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Sleeping">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is sleeping.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="SystemStoppingReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known reasons why the imaging system is stopping.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            
+            <xsd:enumeration value="ShuttingDown">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is shutting down.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Rebooting">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is rebooting.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="RebootingForUpgrade">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is rebooting for an upgrade of its firmware.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="GoingToSleep">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is going to sleep.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is stopping for another reason.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+</xsd:schema>

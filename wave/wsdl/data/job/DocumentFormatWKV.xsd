@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of document formats -->
+    <xsd:simpleType name="DocumentFormatWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known values for a document format.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+
+            <xsd:enumeration value="application/vnd.hp-HPGL">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The HP-GL document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="application/vnd.hp-HPGL2">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The HP-GL/2 document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="application/vnd.hp-RTL">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The HP-RTL document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="application/x-906">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The CalComp document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="application/pdf">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The PDF document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="application/postscript">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The PostScript document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="image/tiff">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The TIFF document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="image/jpeg">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The JPEG document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="application/cals-1840">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The CALS document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="image/x-edmics">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The C4 document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="image/x-nirs">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The NIRS document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="application/x-dwf">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The DWF document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="text/plain">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The plain text (ASCII) document format.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

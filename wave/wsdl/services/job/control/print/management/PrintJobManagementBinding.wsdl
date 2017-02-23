@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="PrintJobManagementBinding"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/print/management"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/print/management"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:import location="PrintJobManagementPort.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/job/control/print/management"/>
+
+    <wsdl:binding name="PrintJobManagementBinding" type="tns:PrintJobManagementPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="cancelJob">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/print/management/cancelJob"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobManagementFault">
+                <soap:fault name="jobManagementFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="promoteJob">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/print/management/promoteJob"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobManagementFault">
+                <soap:fault name="jobManagementFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="holdJob">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/print/management/holdJob"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobManagementFault">
+                <soap:fault name="jobManagementFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="releaseJob">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/print/management/releaseJob"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobManagementFault">
+                <soap:fault name="jobManagementFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="holdQueue">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/print/management/holdQueue"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobManagementFault">
+                <soap:fault name="jobManagementFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="releaseQueue">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/print/management/releaseQueue"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobManagementFault">
+                <soap:fault name="jobManagementFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="clearQueue">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/print/management/clearQueue"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobManagementFault">
+                <soap:fault name="jobManagementFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+</wsdl:definitions>
+
+
+
+
+
+

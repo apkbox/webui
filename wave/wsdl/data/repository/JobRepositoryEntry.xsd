@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="JobContainerIdentification.xsd"/>
+    <xsd:include schemaLocation="SaveJobs.xsd"/>
+
+    <!-- a job repository entry -->
+    <xsd:complexType name="JobRepositoryEntry">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a job repository entry. A job repository entry is an association
+                {save job, recipient name}.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:saveJob"/>
+        </xsd:sequence>
+        <xsd:attribute ref="tns:containerName" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="jobRepositoryEntry" type="tns:JobRepositoryEntry"/>
+
+    <!-- a list of job repository entries -->
+    <xsd:complexType name="JobRepositoryEntries">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of job repository entries.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobRepositoryEntry" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobRepositoryEntries" type="tns:JobRepositoryEntries"/>
+
+    <xsd:element name="fromJobPosition" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The position of the first job to get in a job container, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="toJobPosition" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The position of the last job to get in a job container, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

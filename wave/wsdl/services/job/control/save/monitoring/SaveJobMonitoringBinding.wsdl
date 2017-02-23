@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="SaveJobMonitoringBinding"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:import location="SaveJobMonitoringPort.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring"/>
+
+    <wsdl:binding name="SaveJobMonitoringBinding" type="tns:SaveJobMonitoringPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="getJobRepositoryElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring/getJobRepositoryElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getJobRepositoryUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring/getJobRepositoryUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="lookupJob">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring/lookupJob"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getJobs">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring/getJobs"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getJobsInContainer">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring/getJobsInContainer"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+</wsdl:definitions>
+
+
+
+
+
+

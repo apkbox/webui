@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../job/JobElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+
+    <!-- a save job -->
+    <xsd:complexType name="SaveJob">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a save job. A save job is present in the job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="job:Job">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="saveJob" type="tns:SaveJob"/>
+
+    <!-- a list of save jobs -->
+    <xsd:complexType name="SaveJobs">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of save jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:saveJob" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="saveJobs" type="tns:SaveJobs"/>
+
+</xsd:schema>

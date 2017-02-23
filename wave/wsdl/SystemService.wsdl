@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="SystemService"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/system"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/system"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+                      
+    <wsdl:import location="services/system/SystemBinding.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/system"/>
+
+    <wsdl:service name="SystemService">
+        <wsdl:port name="SystemPort" binding="tns:SystemBinding">
+            <soap:address location="http://localhost/eip/wave/SystemService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
+
+
+

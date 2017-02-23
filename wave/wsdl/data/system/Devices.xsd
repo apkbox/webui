@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="DeviceDescription.xsd"/>
+
+    <!-- a list of available devices -->
+    <xsd:complexType name="Devices">
+        <xsd:annotation>
+            <xsd:documentation>
+                The devices available on an imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printDevice" minOccurs="0"/>
+            <xsd:element ref="tns:scanDevice" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="devices" type="tns:Devices"/>
+
+    <!-- a print device -->
+    <xsd:complexType name="PrintDevice">
+        <xsd:annotation>
+            <xsd:documentation>
+                A print device available on an imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printDeviceDescription"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="printDevice" type="tns:PrintDevice"/>
+
+    <!-- a scan device -->
+    <xsd:complexType name="ScanDevice">
+        <xsd:annotation>
+            <xsd:documentation>
+                A scan device available on an imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:scanDeviceDescription"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="scanDevice" type="tns:ScanDevice"/>
+
+</xsd:schema>

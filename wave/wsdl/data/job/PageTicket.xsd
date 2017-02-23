@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="PageProcessing.xsd"/>
+
+    <!-- a list of page tickets -->
+    <xsd:complexType name="PageTickets">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of page tickets.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:pageTicket" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="pageTickets" type="tns:PageTickets"/>
+
+    <!-- a page ticket -->
+    <xsd:complexType name="PageTicket">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a page ticket. A page ticket specifies how to process a range of pages in a document.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:pageProcessing"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="pageTicket" type="tns:PageTicket"/>
+
+    <xsd:attribute name="fromPage" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The first page of a document concerned by a page ticket, 1-based, inclusive.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute name="toPage" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The last page of a document concerned by a page ticket, 1-based, inclusive.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+</xsd:schema>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/faults"
+            xmlns:tns="http://schemas.oce.com/ws/wave/faults"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of session denied reasons -->
+    <xsd:simpleType name="SessionDeniedFaultReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values of the reasons why the usage of a client session was denied.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="NoSuchSession">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The passed in client session identifier could not be found.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Initializing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is initializing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ShuttingDown">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is shutting down.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Rebooting">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is rebooting.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="RebootingForUpgrade">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is rebooting for an upgrade of its firmware.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="GoingToSleep">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is going to sleep (ACPI S3).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="SystemInError">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is in error and must be rebooted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The usage of the session was denied for another reason.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

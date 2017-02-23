@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MediaTypeDescription.xsd"/>
+
+    <!-- a list of media types -->
+    <xsd:complexType name="MediaTypes">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of media types
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="mediaTypes" type="tns:MediaTypes"/>
+
+    <!-- a media type -->
+    <xsd:complexType name="MediaType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a media type.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaTypeDescription"/>
+        </xsd:sequence>
+        <xsd:attribute ref="tns:mediaTypeId" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="mediaType" type="tns:MediaType"/>
+
+    <xsd:attribute name="mediaTypeId" type="xsd:ID">
+        <xsd:annotation>
+            <xsd:documentation>
+                The identifier of a media type element in an XML document. This identifier is referenced by
+                mediaTypeRef elements.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:element name="mediaTypeRef" type="xsd:IDREF">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reference to a media type element in an XML document.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

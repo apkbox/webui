@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="DocumentDescription.xsd"/>
+    <xsd:include schemaLocation="DocumentProcessing.xsd"/>
+    <xsd:include schemaLocation="PageTicket.xsd"/>
+
+    <!-- a document ticket -->
+    <xsd:complexType name="DocumentTicket">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a document ticket. A document ticket specifies the document to process, and how to
+                process it.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:documentDescription"/>
+            <xsd:element ref="tns:documentProcessing" minOccurs="0"/>
+            <xsd:element ref="tns:pageTickets" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute ref="tns:firstPageToPrint" use="required"/>
+        <xsd:attribute ref="tns:lastPageToPrint" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="documentTicket" type="tns:DocumentTicket"/>
+
+    <xsd:attribute name="firstPageToPrint" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The first page to print in the document, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:attribute name="lastPageToPrint" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The last page to print in the document, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+</xsd:schema>

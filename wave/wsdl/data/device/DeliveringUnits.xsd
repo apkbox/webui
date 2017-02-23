@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://schemas.oce.com/ws/wave/data/common"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../common/CommonElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/common"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="OutputTrayDescription.xsd"/>
+    <xsd:include schemaLocation="OutputTrayStatus.xsd"/>
+
+    <!-- a list of delivering units -->
+    <xsd:complexType name="DeliveringUnits">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of delivering units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:outputTray" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="unitCount" type="xsd:int" use="required"/>
+        <xsd:attribute ref="common:reportedElements" use="optional"/>
+    </xsd:complexType>
+    <xsd:element name="deliveringUnits" type="tns:DeliveringUnits"/>
+
+    <!-- an output tray -->
+    <xsd:complexType name="OutputTray">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of an output tray.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:outputTrayDescription" minOccurs="0"/>
+            <xsd:element ref="tns:outputTrayStatus" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="unitNumber" type="xsd:int" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="outputTray" type="tns:OutputTray"/>
+
+</xsd:schema>

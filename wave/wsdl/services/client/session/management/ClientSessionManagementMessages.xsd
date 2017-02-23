@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/services/client/session/management"
+            xmlns:tns="http://schemas.oce.com/ws/wave/services/client/session/management"
+            xmlns:client="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:import schemaLocation="../../../../data/client/ClientElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/client"/>
+
+    <xsd:complexType name="OpenClientSessionRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to open a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientInterfaceVersion" minOccurs="0"/>
+            <xsd:element ref="client:localization" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="openClientSessionRequest" type="tns:OpenClientSessionRequest"/>
+
+    <xsd:complexType name="OpenClientSessionResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response that is received when opening a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSession"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="openClientSessionResponse" type="tns:OpenClientSessionResponse"/>
+
+    <xsd:complexType name="CloseClientSessionRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to close a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="closeClientSessionRequest" type="tns:CloseClientSessionRequest"/>
+
+    <xsd:complexType name="CloseClientSessionResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response that is received when closing a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="closeClientSessionResponse" type="tns:CloseClientSessionResponse"/>
+
+    <xsd:complexType name="GetSessionElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the elements of a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getSessionElementsRequest" type="tns:GetSessionElementsRequest"/>
+
+    <xsd:complexType name="GetSessionElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response that is received when getting the elements of a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSession"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getSessionElementsResponse" type="tns:GetSessionElementsResponse"/>
+
+    <xsd:complexType name="GetSessionUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updates of a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getSessionUpdatesRequest" type="tns:GetSessionUpdatesRequest"/>
+
+    <xsd:complexType name="GetSessionUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response that is received when getting the updates of a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSession" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getSessionUpdatesResponse" type="tns:GetSessionUpdatesResponse"/>
+
+    <xsd:complexType name="SetPreferredLocalizationRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to set the preferred localization.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="client:localization"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="setPreferredLocalizationRequest" type="tns:SetPreferredLocalizationRequest"/>
+
+    <xsd:complexType name="SetPreferredLocalizationResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response that is received when setting the preferred localization.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:localization"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="setPreferredLocalizationResponse" type="tns:SetPreferredLocalizationResponse"/>
+
+</xsd:schema>

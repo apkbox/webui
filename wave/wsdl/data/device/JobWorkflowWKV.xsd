@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- enumeration of job workflows -->
+    <xsd:simpleType name="JobWorkflowWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                An enumeration of well known job workflows.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="PrinterQueue">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A job submitted to the printer goes to the printer queue.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobRepository">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A job submitted to the printer goes to the job repository.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

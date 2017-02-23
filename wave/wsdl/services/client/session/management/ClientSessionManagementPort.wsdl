@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="ClientSessionManagementPort"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/client/session/management"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/client/session/management"
+                  xmlns:faults="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:import location="../../../../faults/Faults.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/faults"/>
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="ClientSessionManagementMessages.xsd"
+                        namespace="http://schemas.oce.com/ws/wave/services/client/session/management"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="openClientSessionRequest">
+        <wsdl:part name="request" element="tns:openClientSessionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="openClientSessionResponse">
+        <wsdl:part name="response" element="tns:openClientSessionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="closeClientSessionRequest">
+        <wsdl:part name="request" element="tns:closeClientSessionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="closeClientSessionResponse">
+        <wsdl:part name="response" element="tns:closeClientSessionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="getSessionElementsRequest">
+        <wsdl:part name="request" element="tns:getSessionElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getSessionElementsResponse">
+        <wsdl:part name="response" element="tns:getSessionElementsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="getSessionUpdatesRequest">
+        <wsdl:part name="request" element="tns:getSessionUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getSessionUpdatesResponse">
+        <wsdl:part name="response" element="tns:getSessionUpdatesResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="setPreferredLocalizationRequest">
+        <wsdl:part name="request" element="tns:setPreferredLocalizationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="setPreferredLocalizationResponse">
+        <wsdl:part name="response" element="tns:setPreferredLocalizationResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="ClientSessionManagementPort">
+
+        <wsdl:operation name="openClientSession">
+            <wsdl:input message="tns:openClientSessionRequest"/>
+            <wsdl:output message="tns:openClientSessionResponse"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="closeClientSession">
+            <wsdl:input message="tns:closeClientSessionRequest"/>
+            <wsdl:output message="tns:closeClientSessionResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getSessionElements">
+            <wsdl:input message="tns:getSessionElementsRequest"/>
+            <wsdl:output message="tns:getSessionElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getSessionUpdates">
+            <wsdl:input message="tns:getSessionUpdatesRequest"/>
+            <wsdl:output message="tns:getSessionUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="setPreferredLocalization">
+            <wsdl:input message="tns:setPreferredLocalizationRequest"/>
+            <wsdl:output message="tns:setPreferredLocalizationResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+</wsdl:definitions>
+
+

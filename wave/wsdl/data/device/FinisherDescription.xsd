@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="FinisherTypeWKV.xsd"/>
+
+    <!-- description of a finishing unit -->
+    <xsd:complexType name="FinisherDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a finisher description.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:finisherName"/>
+            <xsd:element ref="tns:finisherInfo"/>
+            <xsd:element ref="tns:finisherLocation"/>
+            <xsd:element ref="tns:finisherType"/>
+            <xsd:element ref="tns:finisherModel"/>
+            <xsd:element ref="tns:finisherMakeAndModel"/>
+            <xsd:element ref="tns:finisherVersion"/>
+            <xsd:element ref="tns:finisherKey"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="finisherDescription" type="tns:FinisherDescription"/>
+
+    <xsd:element name="finisherName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of a finishing unit, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="finisherInfo" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                Some textual information about a finishing unit, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="finisherLocation" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The geographical location of a finishing unit, on a customer site.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="finisherType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The type of the finisher.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:FinisherTypeWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="finisherModel" type="xsd:NMTOKEN">
+        <xsd:annotation>
+            <xsd:documentation>
+                The finisher model, as defined by the manufacturer of the device.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="finisherMakeAndModel" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The make and the model of the finisher device, as it is meant to be displayed. It may contain the
+                trademark of the reseller of the device.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="finisherVersion" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The version of a finishing unit.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="finisherKey" type="xsd:NMTOKEN">
+        <xsd:annotation>
+            <xsd:documentation>
+                The key of a finishing unit. It can be used as an alias to a finishing unit in a processing directive.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

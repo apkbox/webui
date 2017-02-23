@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring"
+            xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/save/monitoring"
+            xmlns:client="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:repository="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:import schemaLocation="../../../../../data/client/ClientElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/client"/>
+
+    <xsd:import schemaLocation="../../../../../data/job/JobElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+
+    <xsd:import schemaLocation="../../../../../data/repository/RepositoryElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/repository"/>
+
+    <xsd:complexType name="GetJobRepositoryElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the elements of the job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobRepositoryElementsRequest" type="tns:GetJobRepositoryElementsRequest"/>
+
+    <xsd:complexType name="GetJobRepositoryElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the elements of the job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="repository:jobRepository"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobRepositoryElementsResponse" type="tns:GetJobRepositoryElementsResponse"/>
+
+    <xsd:complexType name="GetJobRepositoryUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updates made to the elements of the job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobRepositoryUpdatesRequest" type="tns:GetJobRepositoryUpdatesRequest"/>
+
+    <xsd:complexType name="GetJobRepositoryUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the updates made to the elements of the job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="repository:jobRepository" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobRepositoryUpdatesResponse" type="tns:GetJobRepositoryUpdatesResponse"/>
+
+    <xsd:complexType name="LookupJobRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to lookup the jobs matching the specified criterion in the job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobClientReference"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="lookupJobRequest" type="tns:LookupJobRequest"/>
+
+    <xsd:complexType name="LookupJobResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the jobs matching the specified criterion.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="repository:jobRepositoryEntries"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="lookupJobResponse" type="tns:LookupJobResponse"/>
+
+    <xsd:complexType name="GetJobsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get a specified list of jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobIdentifiers"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobsRequest" type="tns:GetJobsRequest"/>
+
+    <xsd:complexType name="GetJobsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the retrieved jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="repository:jobRepositoryEntries"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobsResponse" type="tns:GetJobsResponse"/>
+
+    <xsd:complexType name="GetJobsInContainerRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the jobs saved in a container of the job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="repository:containerName"/>
+            <xsd:element ref="repository:fromJobPosition" minOccurs="0"/>
+            <xsd:element ref="repository:toJobPosition" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobsInContainerRequest" type="tns:GetJobsInContainerRequest"/>
+
+    <xsd:complexType name="GetJobsInContainerResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the retrieved jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="repository:saveJobCount"/>
+            <xsd:element ref="repository:fromJobPosition" minOccurs="0"/>
+            <xsd:element ref="repository:toJobPosition" minOccurs="0"/>
+            <xsd:element ref="repository:saveJobs" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobsInContainerResponse" type="tns:GetJobsInContainerResponse"/>
+
+</xsd:schema>

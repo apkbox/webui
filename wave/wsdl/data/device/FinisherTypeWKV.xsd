@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of finisher types -->
+    <xsd:simpleType name="FinisherTypeWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known finisher types.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Folder">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is a folder device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Binder">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is a binder device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Puncher">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is a puncher device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Stitcher">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is a stitcher device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Stacker">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is a stacker device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Trimmer">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is a trimmer device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Another type of finishing unit.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

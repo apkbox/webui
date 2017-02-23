@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="SystemAccessManagementBinding"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/system/access/management"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/system/access/management"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:import location="SystemAccessManagementPort.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/system/access/management"/>
+
+    <wsdl:binding name="SystemAccessManagementBinding" type="tns:SystemAccessManagementPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="getSystemAccessElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/system/access/management/getSystemAccessElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getSystemAccessUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/system/access/management/getSystemAccessUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="requestSystemAccess">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/system/access/management/requestSystemAccess"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="systemAccessFault">
+                <soap:fault name="systemAccessFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="releaseSystemAccess">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/system/access/management/releaseSystemAccess"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="systemAccessFault">
+                <soap:fault name="systemAccessFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+</wsdl:definitions>
+
+
+
+
+
+

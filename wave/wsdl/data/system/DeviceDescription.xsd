@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="TransportAddresses.xsd"/>
+
+    <!-- description of an imaging device -->
+    <xsd:complexType name="DeviceDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of an imaging device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:deviceModel"/>
+            <xsd:element ref="tns:deviceMakeAndModel"/>
+            <xsd:element ref="tns:deviceVersion"/>
+            <xsd:element ref="tns:deviceUriSupported"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- description of a print device -->
+    <xsd:complexType name="PrintDeviceDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of a print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:DeviceDescription">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="printDeviceDescription" type="tns:PrintDeviceDescription"/>
+
+    <!-- description of a scan device -->
+    <xsd:complexType name="ScanDeviceDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of a scan device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:DeviceDescription">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="scanDeviceDescription" type="tns:ScanDeviceDescription"/>
+
+    <xsd:element name="deviceModel" type="xsd:NMTOKEN">
+        <xsd:annotation>
+            <xsd:documentation>
+                The device model, as defined by the manufacturer of the device.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="deviceMakeAndModel" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The make and the model of the device, as it is meant to be displayed. It may contain the trademark of
+                the reseller of the device.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="deviceVersion" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The version of the printer.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

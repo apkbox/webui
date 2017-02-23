@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:resource="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- Imports required by this schema -->
+    <xsd:import schemaLocation="../resource/ResourceElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/resource"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MediaFeederStateWKV.xsd"/>
+
+    <xsd:complexType name="MediaFeederStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a media feeder status.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaFeederState"/>
+            <xsd:element ref="tns:mediaFeedDirection" minOccurs="0"/>
+            <xsd:element ref="resource:mediaSupplyDescription" minOccurs="0"/>
+            <xsd:element ref="resource:mediaSupplyLevel" minOccurs="0"/>
+            <xsd:element ref="tns:remainingMediaSupply" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="mediaFeederStatus" type="tns:MediaFeederStatus"/>
+
+    <xsd:element name="mediaFeederState">
+        <xsd:annotation>
+            <xsd:documentation>
+                The state of a media feeder.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:MediaFeederStateWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="mediaFeedDirection">
+        <xsd:annotation>
+            <xsd:documentation>
+                The feed direction of the cut sheets in a media feeder.
+                Only applies when the media feeder is a cut sheet feeder.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:MediaFeedDirectionWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="remainingMediaSupply" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The amount of media supply remaining in a media feeder, in meters for continuous rolls, and in number
+                of sheets for cut sheets.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- a list of job identifiers -->
+    <xsd:complexType name="JobIdentifiers">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of job identifiers.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobId" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobIdentifiers" type="tns:JobIdentifiers"/>
+
+    <xsd:element name="jobId" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The identifier of a job in an imaging system; this identifier is globally unique in the system.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:attribute name="jobId" type="xsd:int"/>
+
+    <xsd:element name="jobUri" type="xsd:anyURI">
+        <xsd:annotation>
+            <xsd:documentation>
+                The URI of a job in the imaging system; this URI is globally unique in the system.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="jobClientReference" type="xsd:NMTOKEN">
+        <xsd:annotation>
+            <xsd:documentation>
+                The job client reference element specified at the job creation.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="SystemBinding"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/system"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/system"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:import location="SystemPort.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/system"/>
+
+    <wsdl:binding name="SystemBinding" type="tns:SystemPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="getSystemElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/system/getSystemElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+</wsdl:definitions>
+
+
+
+
+
+

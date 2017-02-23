@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- description of a job -->
+    <xsd:complexType name="JobDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a job description.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobName"/>
+            <xsd:element ref="tns:jobOriginatingUserName"/>
+            <xsd:element ref="tns:jobMessageToOperator" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobDescription" type="tns:JobDescription"/>
+
+    <xsd:element name="jobName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of a job, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="jobOriginatingUserName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of the user who submitted a job to the imaging system, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="jobMessageToOperator" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                A user provided message concerning the job, for the operator.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

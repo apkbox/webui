@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:common="http://schemas.oce.com/ws/wave/data/common"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../common/CommonElements.xsd" namespace="http://schemas.oce.com/ws/wave/data/common"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="JobContainerIdentification.xsd"/>
+    <xsd:include schemaLocation="JobContainerStatus.xsd"/>
+
+    <!-- other includes required by client schemas  -->
+    <xsd:include schemaLocation="JobRepositoryEntry.xsd"/>
+    <xsd:include schemaLocation="SaveJobs.xsd"/>
+
+    <!-- a job repository -->
+    <xsd:complexType name="JobRepository">
+        <xsd:annotation>
+            <xsd:documentation>
+                A job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobContainers"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobRepository" type="tns:JobRepository"/>
+
+    <!-- a collection of job containers -->
+    <xsd:complexType name="JobContainers">
+        <xsd:annotation>
+            <xsd:documentation>
+                A collection of job containers.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobContainer" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute ref="common:reportedElements" use="optional"/>
+    </xsd:complexType>
+    <xsd:element name="jobContainers" type="tns:JobContainers"/>
+
+    <!-- a job container -->
+    <xsd:complexType name="JobContainer">
+        <xsd:annotation>
+            <xsd:documentation>
+                A job container in a job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobContainerStatus" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute ref="tns:containerName" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="jobContainer" type="tns:JobContainer"/>
+
+</xsd:schema>
+

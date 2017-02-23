@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="SystemStateWKV.xsd"/>
+
+    <xsd:complexType name="SystemStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The status of the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:systemUpTime"/>
+            <xsd:element ref="tns:systemState"/>
+            <xsd:element ref="tns:systemStoppingReason" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="systemStatus" type="tns:SystemStatus"/>
+    
+    <xsd:element name="systemUpTime" type="xsd:dateTime">
+        <xsd:annotation>
+            <xsd:documentation>
+                The date and time when the imaging system has been powered up.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    
+    <xsd:element name="systemState">
+        <xsd:annotation>
+            <xsd:documentation>
+                The state of the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:SystemStateWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+    
+    <xsd:element name="systemStoppingReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reason why the imaging system is stopping.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:SystemStoppingReasonWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+</xsd:schema>

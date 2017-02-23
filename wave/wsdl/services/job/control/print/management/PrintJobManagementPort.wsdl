@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="PrintJobManagementPort"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/print/management"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/print/management"
+                  xmlns:faults="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:import location="../../../../../faults/Faults.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/faults"/>
+
+    <wsdl:types>
+        <xsd:schema>                        
+            <xsd:import schemaLocation="PrintJobManagementMessages.xsd"
+                        namespace="http://schemas.oce.com/ws/wave/services/job/control/print/management"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="cancelJobRequest">
+        <wsdl:part name="request" element="tns:cancelJobRequest"/>
+    </wsdl:message>
+    <wsdl:message name="cancelJobResponse">
+        <wsdl:part name="response" element="tns:cancelJobResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="promoteJobRequest">
+        <wsdl:part name="request" element="tns:promoteJobRequest"/>
+    </wsdl:message>
+    <wsdl:message name="promoteJobResponse">
+        <wsdl:part name="response" element="tns:promoteJobResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="holdJobRequest">
+        <wsdl:part name="request" element="tns:holdJobRequest"/>
+    </wsdl:message>
+    <wsdl:message name="holdJobResponse">
+        <wsdl:part name="response" element="tns:holdJobResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="releaseJobRequest">
+        <wsdl:part name="request" element="tns:releaseJobRequest"/>
+    </wsdl:message>
+    <wsdl:message name="releaseJobResponse">
+        <wsdl:part name="response" element="tns:releaseJobResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="holdQueueRequest">
+        <wsdl:part name="request" element="tns:holdQueueRequest"/>
+    </wsdl:message>
+    <wsdl:message name="holdQueueResponse">
+        <wsdl:part name="response" element="tns:holdQueueResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="releaseQueueRequest">
+        <wsdl:part name="request" element="tns:releaseQueueRequest"/>
+    </wsdl:message>
+    <wsdl:message name="releaseQueueResponse">
+        <wsdl:part name="response" element="tns:releaseQueueResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="clearQueueRequest">
+        <wsdl:part name="request" element="tns:clearQueueRequest"/>
+    </wsdl:message>
+    <wsdl:message name="clearQueueResponse">
+        <wsdl:part name="response" element="tns:clearQueueResponse"/>
+    </wsdl:message>
+    
+    <wsdl:portType name="PrintJobManagementPort">
+        <wsdl:operation name="cancelJob">
+            <wsdl:input message="tns:cancelJobRequest"/>
+            <wsdl:output message="tns:cancelJobResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="jobManagementFault" message="faults:jobManagementFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="promoteJob">
+            <wsdl:input message="tns:promoteJobRequest"/>
+            <wsdl:output message="tns:promoteJobResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="jobManagementFault" message="faults:jobManagementFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="holdJob">
+            <wsdl:input message="tns:holdJobRequest"/>
+            <wsdl:output message="tns:holdJobResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="jobManagementFault" message="faults:jobManagementFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="releaseJob">
+            <wsdl:input message="tns:releaseJobRequest"/>
+            <wsdl:output message="tns:releaseJobResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="jobManagementFault" message="faults:jobManagementFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="holdQueue">
+            <wsdl:input message="tns:holdQueueRequest"/>
+            <wsdl:output message="tns:holdQueueResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="jobManagementFault" message="faults:jobManagementFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="releaseQueue">
+            <wsdl:input message="tns:releaseQueueRequest"/>
+            <wsdl:output message="tns:releaseQueueResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="jobManagementFault" message="faults:jobManagementFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="clearQueue">
+            <wsdl:input message="tns:clearQueueRequest"/>
+            <wsdl:output message="tns:clearQueueResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="jobManagementFault" message="faults:jobManagementFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+        
+</wsdl:definitions>

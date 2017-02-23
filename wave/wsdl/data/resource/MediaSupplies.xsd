@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MediaSupplyDescription.xsd"/>
+
+    <!-- a list of media supplies -->
+    <xsd:complexType name="MediaSupplies">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of media supplies.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaSupply" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="mediaSupplies" type="tns:MediaSupplies"/>
+
+    <!-- a media supply -->
+    <xsd:complexType name="MediaSupply">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a media supply.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaSupplyDescription"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="mediaSupply" type="tns:MediaSupply"/>
+
+    <xsd:element name="mediaSupplyLevel" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The level of remaining media supply, in % of the total capacity.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

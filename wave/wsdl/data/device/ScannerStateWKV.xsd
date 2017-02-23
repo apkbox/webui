@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of scanner states -->
+    <xsd:simpleType name="ScannerStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known states for a scanner.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Idle">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The scanner is idle.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Processing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The scanner is processing a job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Stopped">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The scanner is stopped, and requires user attention.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- enumeration of scanner state reasons -->
+    <xsd:simpleType name="ScannerStateReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known scanner state reasons.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

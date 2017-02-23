@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <!-- enumeration of well known marker technologies -->
+    <xsd:simpleType name="MarkerTechnologyWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known marker technologies.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="PTI">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A color technology using toner pearls.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ElectrophotographicLed">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A black and white technology using toner.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="AqueousInkjet">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A color technology using a liquid supply.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Another marker technology.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="UV">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        An inkjet technology that uses a liquid marker supply and Ultra-Violet light for curing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

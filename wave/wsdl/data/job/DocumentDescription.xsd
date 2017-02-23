@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="DocumentFormatWKV.xsd"/>
+
+    <!-- description of a document -->
+    <xsd:complexType name="DocumentDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a document description.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:documentName"/>
+            <xsd:element ref="tns:documentMessageToOperator" minOccurs="0"/>
+            <xsd:element ref="tns:documentUri" minOccurs="0"/>
+            <xsd:element ref="tns:documentFormat" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="documentDescription" type="tns:DocumentDescription"/>
+
+    <xsd:element name="documentName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of a document, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="documentMessageToOperator" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                A user provided message concerning the document, for the operator.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="documentUri" type="xsd:anyURI">
+        <xsd:annotation>
+            <xsd:documentation>
+                The URI of the document. This URI is not a transport address, and therefore cannot be used to access
+                document data. It is used as a general purpose information about the origin of the document.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="documentFormat">
+        <xsd:annotation>
+            <xsd:documentation>
+                A document format.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:string tns:DocumentFormatWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+</xsd:schema>

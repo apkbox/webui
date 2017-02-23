@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="OutputTrayStateWKV.xsd"/>
+
+    <xsd:complexType name="OutputTrayStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of an output tray status.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:outputTrayState"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="outputTrayStatus" type="tns:OutputTrayStatus"/>
+
+    <xsd:element name="outputTrayState">
+        <xsd:annotation>
+            <xsd:documentation>
+                The state of an output tray.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:OutputTrayStateWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+</xsd:schema>

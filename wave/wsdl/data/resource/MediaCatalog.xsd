@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MediaSupplyDescription.xsd"/>
+    <xsd:include schemaLocation="MediaType.xsd"/>
+    <xsd:include schemaLocation="MediaSize.xsd"/>
+
+    <!-- catalog of media supplies -->
+    <xsd:complexType name="MediaCatalog">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a media catalog.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:continuousRolls"/>
+            <xsd:element ref="tns:cutSheets"/>
+            <xsd:element ref="tns:mediaTypes"/>
+            <xsd:element ref="tns:rollSizes"/>
+            <xsd:element ref="tns:sheetSizes"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="mediaCatalog" type="tns:MediaCatalog"/>
+
+    <!-- a list of continuous rolls -->
+    <xsd:complexType name="ContinuousRolls">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of continuous rolls.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:continuousRoll" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="continuousRolls" type="tns:ContinuousRolls"/>
+
+    <!-- a list of cut sheets -->
+    <xsd:complexType name="CutSheets">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of cut sheets.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:cutSheet" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="cutSheets" type="tns:CutSheets"/>
+
+    <!-- a continuous roll -->
+    <xsd:complexType name="ContinuousRoll">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a continuous roll.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaSupplyDescription"/>
+            <xsd:element ref="tns:mediaTypeRef"/>
+            <xsd:element ref="tns:rollSizeRef"/>
+            <xsd:element ref="tns:portraitSheetSizeRefs"/>
+            <xsd:element ref="tns:landscapeSheetSizeRefs"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="continuousRoll" type="tns:ContinuousRoll"/>
+
+    <!-- a cut sheet -->
+    <xsd:complexType name="CutSheet">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a cut sheet.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaSupplyDescription"/>
+            <xsd:element ref="tns:mediaTypeRef"/>
+            <xsd:element ref="tns:sheetSizeRef"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="cutSheet" type="tns:CutSheet"/>
+
+</xsd:schema>

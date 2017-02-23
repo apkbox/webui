@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- status of a job container -->
+    <xsd:complexType name="JobContainerStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The status of a job container.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:saveJobCount"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobContainerStatus" type="tns:JobContainerStatus"/>
+    
+    <!-- number of save jobs -->
+    <xsd:element name="saveJobCount" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The number of save jobs present in a job container.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

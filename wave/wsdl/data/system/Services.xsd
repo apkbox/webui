@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="TransportAddresses.xsd"/>
+
+    <!-- list of available services -->
+    <xsd:complexType name="Services">
+        <xsd:annotation>
+            <xsd:documentation>
+                The services available on an imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:clientSessionManagementService" minOccurs="0"/>
+            <xsd:element ref="tns:printerMonitoringService" minOccurs="0"/>
+            <xsd:element ref="tns:printerManagementService" minOccurs="0"/>
+            <xsd:element ref="tns:scannerMonitoringService" minOccurs="0"/>
+            <xsd:element ref="tns:scannerManagementService" minOccurs="0"/>
+            <xsd:element ref="tns:jobSubmissionService" minOccurs="0"/>
+            <xsd:element ref="tns:jobCompositionService" minOccurs="0"/>
+            <xsd:element ref="tns:jobDownloadService" minOccurs="0"/>
+            <xsd:element ref="tns:jobAccountingService" minOccurs="0"/>
+            <xsd:element ref="tns:printJobMonitoringService" minOccurs="0"/>
+            <xsd:element ref="tns:printJobManagementService" minOccurs="0"/>
+            <xsd:element ref="tns:saveJobMonitoringService" minOccurs="0"/>
+            <xsd:element ref="tns:saveJobManagementService" minOccurs="0"/>
+            <xsd:element ref="tns:scanJobMonitoringService" minOccurs="0"/>
+            <xsd:element ref="tns:scanJobManagementService" minOccurs="0"/>
+            <xsd:element ref="tns:systemAccessManagementService" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="services" type="tns:Services"/>
+
+    <!-- an imaging system service -->
+    <xsd:complexType name="ImagingSystemService">
+        <xsd:annotation>
+            <xsd:documentation>
+                A service in an imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:serviceUriSupported"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="clientSessionManagementService" type="tns:ImagingSystemService"/>
+    <xsd:element name="printerMonitoringService" type="tns:ImagingSystemService"/>
+    <xsd:element name="printerManagementService" type="tns:ImagingSystemService"/>
+    <xsd:element name="scannerMonitoringService" type="tns:ImagingSystemService"/>
+    <xsd:element name="scannerManagementService" type="tns:ImagingSystemService"/>
+    <xsd:element name="jobSubmissionService" type="tns:ImagingSystemService"/>
+    <xsd:element name="jobCompositionService" type="tns:ImagingSystemService"/>
+    <xsd:element name="jobDownloadService" type="tns:ImagingSystemService"/>
+    <xsd:element name="jobAccountingService" type="tns:ImagingSystemService"/>
+    <xsd:element name="printJobMonitoringService" type="tns:ImagingSystemService"/>
+    <xsd:element name="printJobManagementService" type="tns:ImagingSystemService"/>
+    <xsd:element name="saveJobMonitoringService" type="tns:ImagingSystemService"/>
+    <xsd:element name="saveJobManagementService" type="tns:ImagingSystemService"/>
+    <xsd:element name="scanJobMonitoringService" type="tns:ImagingSystemService"/>
+    <xsd:element name="scanJobManagementService" type="tns:ImagingSystemService"/>
+    <xsd:element name="systemAccessManagementService" type="tns:ImagingSystemService"/>
+
+</xsd:schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:common="http://schemas.oce.com/ws/wave/data/common"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- includes required by this schema -->
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../common/CommonElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/common"/>
+
+    <!-- a list of folder hardware options -->
+    <xsd:complexType name="FolderHardwareOptions">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of fold programs supported by a finisher unit - only pertinent to a folder.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:hardwareOption" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="folderIntegrated" type="xsd:boolean" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="folderHardwareOptions" type="tns:FolderHardwareOptions"/>
+
+    <!-- a folder hardware option -->
+    <xsd:element name="hardwareOption" type="common:KeyValuePair"/>
+
+</xsd:schema>

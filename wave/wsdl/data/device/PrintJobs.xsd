@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:common="http://schemas.oce.com/ws/wave/data/common"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"            
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../common/CommonElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/common"/>
+    <xsd:import schemaLocation="../job/JobElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+    <xsd:import schemaLocation="../job/BatchJobEntry.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="QueueEntry.xsd"/>                
+
+    <!-- A list of jobs currently active on the printer device -->
+    <xsd:complexType name="ActivePrintJobs">
+        <xsd:annotation>
+            <xsd:documentation>
+                The active jobs are the jobs being processed by the printer device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:printJob" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="activeJobCount" type="xsd:int" use="required"/>
+        <xsd:attribute ref="common:reportedElements" use="optional"/>
+    </xsd:complexType>
+    <xsd:element name="activePrintJobs" type="tns:ActivePrintJobs"/>
+    
+    <xsd:element name="scheduledPrintJobs" type="tns:PrinterQueueEntries">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of print jobs that are scheduled for printing in the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    
+    <xsd:element name="unscheduledPrintJobs" type="job:PrintJobs">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of print jobs that are not scheduled for printing.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

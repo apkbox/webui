@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MarkerSupplyColorantWKV.xsd"/>
+
+    <!-- description of a marker supply -->
+    <xsd:complexType name="MarkerSupplyDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of a marker supply used to mark the paper (name, information, make and model, and color).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerSupplyName"/>
+            <xsd:element ref="tns:markerSupplyMakeAndModel"/>
+            <xsd:element ref="tns:markerSupplyColorant"/>
+            <xsd:element ref="tns:markerSupplyColor"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerSupplyDescription" type="tns:MarkerSupplyDescription"/>
+
+    <xsd:element name="markerSupplyName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of a marker supply, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="markerSupplyMakeAndModel" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The make and model of a marker supply, as it is meant to be displayed. It should contain information
+                used to purchase the supply.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="markerSupplyColorant">
+        <xsd:annotation>
+            <xsd:documentation>
+                The colorant of a marker supply.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:MarkerSupplyColorantWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <!-- color of a marker supply -->
+    <xsd:complexType name="MarkerSupplyColor">
+        <xsd:annotation>
+            <xsd:documentation>
+                The color of a marker supply (red, green, blue RGB components), as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="red" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The red component of the color - range = [0.255], where 255 = full red.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="green" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The green component of the color - range = [0.255], where 255 = full green.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="blue" type="xsd:int" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The blue component of the color - range = [0.255], where 255 = full blue.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    <xsd:element name="markerSupplyColor" type="tns:MarkerSupplyColor"/>
+
+</xsd:schema>

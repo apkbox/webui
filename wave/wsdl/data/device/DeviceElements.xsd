@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="PrinterDescription.xsd"/>
+    <xsd:include schemaLocation="PrinterStatus.xsd"/>
+    <xsd:include schemaLocation="PrinterProcessingSupported.xsd"/>
+    <xsd:include schemaLocation="PrintJobs.xsd"/>
+    <xsd:include schemaLocation="MarkerDescription.xsd"/>
+    <xsd:include schemaLocation="MarkerStatus.xsd"/>
+    <xsd:include schemaLocation="MarkerZoneSupported.xsd"/>
+    <xsd:include schemaLocation="ScannerDescription.xsd"/>
+    <xsd:include schemaLocation="ScannerStatus.xsd"/>
+
+    <!-- other includes required by client schemas -->
+    <xsd:include schemaLocation="MediaFeederUnits.xsd"/>
+    <xsd:include schemaLocation="MarkerFeederUnits.xsd"/>
+    <xsd:include schemaLocation="FinishingUnits.xsd"/>
+    <xsd:include schemaLocation="DeliveringUnits.xsd"/>
+    <xsd:include schemaLocation="QueueEntry.xsd"/>
+    <xsd:include schemaLocation="QueueEvent.xsd"/>
+
+    <!-- a printer -->
+    <xsd:complexType name="Printer">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a printer device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printerDescription" minOccurs="0"/>
+            <xsd:element ref="tns:printerStatus" minOccurs="0"/>
+            <xsd:element ref="tns:printerProcessingSupported" minOccurs="0"/>
+            <xsd:element ref="tns:activePrintJobs" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="printer" type="tns:Printer"/>
+
+    <!-- the marker unit of a printer -->
+    <xsd:complexType name="Marker">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerDescription" minOccurs="0"/>
+            <xsd:element ref="tns:markerStatus" minOccurs="0"/>
+            <xsd:element ref="tns:markerZoneSupported" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="marker" type="tns:Marker"/>
+
+    <!-- a scanner -->
+    <xsd:complexType name="Scanner">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a scanner device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:scannerDescription" minOccurs="0"/>
+            <xsd:element ref="tns:scannerStatus" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="scanner" type="tns:Scanner"/>
+
+</xsd:schema>

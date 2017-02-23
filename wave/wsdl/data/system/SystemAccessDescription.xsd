@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="SystemAccessLevelWKV.xsd"/>
+    <xsd:include schemaLocation="SystemFunctions.xsd"/>
+
+    <xsd:complexType name="SystemAccessDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of the access to the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:systemAccessLevel"/>
+            <xsd:element ref="tns:systemFunctionSupported" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="systemAccessDescription" type="tns:SystemAccessDescription"/>
+
+    <xsd:element name="systemAccessLevel">
+        <xsd:annotation>
+            <xsd:documentation>
+                The level of access to the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:SystemAccessLevelWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+</xsd:schema>

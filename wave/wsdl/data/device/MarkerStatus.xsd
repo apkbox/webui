@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:common="http://schemas.oce.com/ws/wave/data/common"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../common/CommonElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/common"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MarkerStateWKV.xsd"/>
+
+    <xsd:complexType name="MarkerStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The status of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerState"/>
+            <xsd:element ref="tns:markerCounters"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerStatus" type="tns:MarkerStatus"/>
+
+    <xsd:element name="markerState">
+        <xsd:annotation>
+            <xsd:documentation>
+                The state of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:MarkerStateWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:complexType name="MarkerCounters">
+        <xsd:annotation>
+            <xsd:documentation>
+                The usage counters of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerCounter" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerCounters" type="tns:MarkerCounters"/>
+
+    <xsd:element name="markerCounter" type="common:KeyValuePair">
+        <xsd:annotation>
+            <xsd:documentation>
+                A usage counter of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

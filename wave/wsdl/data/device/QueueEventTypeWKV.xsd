@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of queue event types -->
+    <xsd:simpleType name="QueueEventTypeWKV">
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="JobEnumerationStarted">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The enumeration of the jobs present in a device queue has started.
+                        The element fromJobRank is the rank of the first job concerned by the enumeration.
+                        The element toJobRank is the rank of the last job concerned by the enumeration.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobEnumerationProceeded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The enumeration of the jobs present in a device queue is being proceeded.
+                        The element fromJobRank is the rank of the first job concerned by the enumeration.
+                        The element toJobRank is the rank of the last job concerned by the enumeration.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobEnumerationFinished">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The enumeration of the jobs present in a device queue is finished.
+                        The element fromJobRank is the rank of the first job concerned by the enumeration.
+                        The element toJobRank is the rank of the last job concerned by the enumeration.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobInserted">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A job has been inserted in a device queue.
+                        The element jobRank is the rank of the inserted job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobRemoved">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A job has been removed from a device queue.
+                        The element jobRank is the rank of the removed job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobUpdated">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A job has been updated in a device queue.
+                        The element jobRank is the rank of the updated job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobMoved">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        A job has been moved in the device queue.
+                        The element oldJobRank is the old rank of the moved job.
+                        The element newJobRank is the new rank of the moved job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="QueueCleared">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        All the jobs present in a device queue have been cleared.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

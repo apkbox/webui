@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of job states -->
+    <xsd:simpleType name="JobOperationWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values for a job operation.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="PromotePrintJob">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Promote a print-job at the top of the printer queue.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="HoldReleasePrintJob">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Hold or Release a print-job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="CancelPrintJob">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Cancel a print-job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="PrintSaveJob">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Print a copy of a save-job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="DownloadSaveJob">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Download a save-job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="DeleteSaveJob">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Delete a save-job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

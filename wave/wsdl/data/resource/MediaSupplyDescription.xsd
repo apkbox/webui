@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- description of a media supply -->
+    <xsd:complexType name="MediaSupplyDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a media supply description.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaSupplyName"/>
+            <xsd:element ref="tns:mediaSupplyMakeAndModel"/>
+            <xsd:element ref="tns:mediaSupplyKey"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="mediaSupplyDescription" type="tns:MediaSupplyDescription"/>
+
+    <xsd:element name="mediaSupplyName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of the media supply, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaSupplyMakeAndModel" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The make and model of the media supply, as it is meant to be displayed. It should contain information
+                used to purchase the media supply.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaSupplyKey" type="xsd:NMTOKEN">
+        <xsd:annotation>
+            <xsd:documentation>
+                The key of the media supply. It can be used as an alias to a media supply in a processing instruction.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

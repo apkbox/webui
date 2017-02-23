@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="PrintJobMonitoringPort"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/print/monitoring"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/print/monitoring"
+                  xmlns:faults="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:import location="../../../../../faults/Faults.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/faults"/>
+
+    <wsdl:types>
+        <xsd:schema>                        
+            <xsd:import schemaLocation="PrintJobMonitoringMessages.xsd"
+                        namespace="http://schemas.oce.com/ws/wave/services/job/control/print/monitoring"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="lookupJobRequest">
+        <wsdl:part name="request" element="tns:lookupJobRequest"/>
+    </wsdl:message>
+    <wsdl:message name="lookupJobResponse">
+        <wsdl:part name="response" element="tns:lookupJobResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="getJobsInPrinterQueueRequest">
+        <wsdl:part name="request" element="tns:getJobsInPrinterQueueRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getJobsInPrinterQueueResponse">
+        <wsdl:part name="response" element="tns:getJobsInPrinterQueueResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="getJobsRequest">
+        <wsdl:part name="request" element="tns:getJobsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getJobsResponse">
+        <wsdl:part name="response" element="tns:getJobsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="startMonitoringPrinterQueueRequest">
+        <wsdl:part name="request" element="tns:startMonitoringPrinterQueueRequest"/>
+    </wsdl:message>
+    <wsdl:message name="startMonitoringPrinterQueueResponse">
+        <wsdl:part name="response" element="tns:startMonitoringPrinterQueueResponse"/>
+    </wsdl:message>
+    
+    <wsdl:message name="popPrinterQueueEventsRequest">
+        <wsdl:part name="request" element="tns:popPrinterQueueEventsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="popPrinterQueueEventsResponse">
+        <wsdl:part name="response" element="tns:popPrinterQueueEventsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="stopMonitoringPrinterQueueRequest">
+        <wsdl:part name="request" element="tns:stopMonitoringPrinterQueueRequest"/>
+    </wsdl:message>
+    <wsdl:message name="stopMonitoringPrinterQueueResponse">
+        <wsdl:part name="response" element="tns:stopMonitoringPrinterQueueResponse"/>
+    </wsdl:message>
+    
+    <wsdl:message name="getJobResourceElementsRequest">
+        <wsdl:part name="request" element="tns:getJobResourceElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getJobResourceElementsResponse">
+        <wsdl:part name="response" element="tns:getJobResourceElementsResponse"/>
+    </wsdl:message>
+    
+    <wsdl:portType name="PrintJobMonitoringPort">
+        <wsdl:operation name="lookupJob">
+            <wsdl:input message="tns:lookupJobRequest"/>
+            <wsdl:output message="tns:lookupJobResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getJobsInPrinterQueue">
+            <wsdl:input message="tns:getJobsInPrinterQueueRequest"/>
+            <wsdl:output message="tns:getJobsInPrinterQueueResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getJobs">
+            <wsdl:input message="tns:getJobsRequest"/>
+            <wsdl:output message="tns:getJobsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="startMonitoringPrinterQueue">
+            <wsdl:input message="tns:startMonitoringPrinterQueueRequest"/>
+            <wsdl:output message="tns:startMonitoringPrinterQueueResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="popPrinterQueueEvents">
+            <wsdl:input message="tns:popPrinterQueueEventsRequest"/>
+            <wsdl:output message="tns:popPrinterQueueEventsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="stopMonitoringPrinterQueue">
+            <wsdl:input message="tns:stopMonitoringPrinterQueueRequest"/>
+            <wsdl:output message="tns:stopMonitoringPrinterQueueResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="getJobResourceElements">
+            <wsdl:input message="tns:getJobResourceElementsRequest"/>
+            <wsdl:output message="tns:getJobResourceElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+        
+    </wsdl:portType>
+        
+</wsdl:definitions>

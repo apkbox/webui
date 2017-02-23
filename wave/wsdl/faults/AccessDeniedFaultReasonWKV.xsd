@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/faults"
+            xmlns:tns="http://schemas.oce.com/ws/wave/faults"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of access denied reasons -->
+    <xsd:simpleType name="AccessDeniedFaultReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values of the reasons why the access was denied.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="AccessNotGranted">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The access to the service was not granted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="NotEnoughRights">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The user at the origin of the request has not enough rights to perform the operation.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The access was denied for another reason.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

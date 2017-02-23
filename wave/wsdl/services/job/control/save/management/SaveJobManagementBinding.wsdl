@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="SaveJobManagementBinding"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/save/management"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/save/management"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:import location="SaveJobManagementPort.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/job/control/save/management"/>
+
+    <wsdl:binding name="SaveJobManagementBinding" type="tns:SaveJobManagementPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="startJob">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/save/management/startJob"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobManagementFault">
+                <soap:fault name="jobManagementFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteJob">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/control/save/management/deleteJob"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobManagementFault">
+                <soap:fault name="jobManagementFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+</wsdl:definitions>
+
+
+
+
+
+

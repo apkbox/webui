@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../job/JobElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+
+    <!-- a list of printer queue entries -->
+    <xsd:complexType name="PrinterQueueEntries">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of printer queue entries.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printerQueueEntry" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="printerQueueEntries" type="tns:PrinterQueueEntries"/>
+
+    <!-- a generic queue entry -->
+    <xsd:complexType name="QueueEntry">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a queue entry. A queue entry is an association {job, job rank}.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute ref="tns:jobRank" use="required"/>
+    </xsd:complexType>
+
+    <!-- a printer queue entry -->
+    <xsd:complexType name="PrinterQueueEntry">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a printer queue entry.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:QueueEntry">
+                <xsd:sequence>
+                    <xsd:element ref="job:printJob"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="printerQueueEntry" type="tns:PrinterQueueEntry"/>
+
+    <xsd:element name="jobRank" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The rank of a job in a device queue, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:attribute name="jobRank" type="xsd:int"/>
+
+</xsd:schema>

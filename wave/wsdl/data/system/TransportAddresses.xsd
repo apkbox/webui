@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- a list of transport addresses to a service -->
+    <xsd:complexType name="ServiceUriSupported">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of supported transport addresses to a service.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:objectUri" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="serviceUriSupported" type="tns:ServiceUriSupported"/>
+
+    <!-- a list of transport addresses to an imaging device -->
+    <xsd:complexType name="DeviceUriSupported">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of supported transport addresses to an imaging device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:objectUri" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="deviceUriSupported" type="tns:DeviceUriSupported"/>
+
+    <xsd:element name="objectUri" type="xsd:anyURI">
+        <xsd:annotation>
+            <xsd:documentation>
+                The transport address to a service or to a device.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

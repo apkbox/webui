@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="ClientSessionDescription.xsd"/>
+    <xsd:include schemaLocation="ClientSessionStatus.xsd"/>
+
+    <!-- client session -->
+    <xsd:complexType name="ClientSession">
+        <xsd:annotation>
+            <xsd:documentation>
+                The session opened by a remote client.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:clientSessionHandle"/>
+            <xsd:element ref="tns:clientSessionDescription" minOccurs="0"/>
+            <xsd:element ref="tns:clientSessionStatus" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="clientSession" type="tns:ClientSession"/>
+
+    <!-- handle of client session -->
+    <xsd:element name="clientSessionHandle" type="xsd:NMTOKEN">
+        <xsd:annotation>
+            <xsd:documentation>
+                The handle of an opened client session.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

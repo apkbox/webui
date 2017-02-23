@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of job states -->
+    <xsd:simpleType name="JobStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values for a job state.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Pending">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job is a candidate to start processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="PendingHeld">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job is not a candidate for processing for any number of reasons. When these reasons are
+                        cleared, the job will return to the Pending state.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Processing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job is being processed by some imaging device. It can be the object of analysis,
+                        interpretation, or transformion into another electronic form by some software, or it can be
+                        being printed or about to be printed by the print device, or it can be the object of some
+                        finishing operations.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ProcessingStopped">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has stopped while processing for any number of reasons. It will return to the
+                        processing state when these reasons are cleared.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Canceled">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been canceled, either by the owner of the job, or an operator, or by somebody
+                        else at the device panel.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Aborted">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been aborted by some imaging device, usually because of an error.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Completed">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been completed either successfully or partially, with possibly some warnings or
+                        acceptable errors.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- enumeration of job state reasons -->
+    <xsd:simpleType name="JobStateReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values for a job state reason.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="JobIncoming">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job data is being received by the imaging system - the job state is Pending, PendingHeld,
+                        Processing, or ProcessingStopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobQueued">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been entirely queued - the job state is Pending.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobQueuedForMarker">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job is ready to print - the job state is Pending.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobHoldUntilSpecified">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been put on hold until specified - the job state is PendingHeld.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MediaNeeded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Some media supply is needed to print the job - the job state is PendingHeld, or
+                        ProcessingStopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MarkerSupplyNeeded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Some marker supply is needed to print the job - the job state is PendingHeld, or
+                        ProcessingStopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="AccountingDataNeeded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Some accounting data is needed to print the job - the job state is PendingHeld.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ResourcesAreNotReady">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Some resources are not ready and are needed to print the job - the job state is PendingHeld, or
+                        ProcessingStopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobInterpreting">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job data is being interpreted - the job state is Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobTransforming">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job data is being transformed into another electronic form - the job state is Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobPrinting">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job is being printed - the job state is Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobDelivering">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job is being delivered to an output bin or to a finisher device - the job state is
+                        Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ProcessingToStopPoint">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job is being canceled or being aborted, and the cancel or abort process takes some time
+                        to complete - the job state is Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobSuspendedByUser">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been suspended by the user - the job state is ProcessingStopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobSuspendedByOperator">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been suspended by the operator - the job state is ProcessingStopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobSuspendedAtDevice">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been suspended at the device panel - the job state is ProcessingStopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="PrinterStopped">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job processing has been stopped because the printer is stopped - the job state is
+                        ProcessingStopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobPrintedSuccessfully">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been printed successfully - the job state is Completed.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobPrintedWithWarnings">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been printed with some warnings - the job state is Completed.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobPrintedWithErrors">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been printed with some errors - the job state is Completed.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobSavedSuccessfully">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been saved successfully - the job state is Completed.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobSavedWithWarnings">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been saved with some warnings - the job state is Completed.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobSavedWithErrors">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been saved with some errors - the job state is Completed.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobAbortedBySystem">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been aborted by the imaging system - the job state is Aborted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="SubmissionInterrupted">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The submission of the job has been interrupted - the job state is Aborted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="UnsupportedDocumentFormat">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The data format of a document enclosed in the job is not supported - the job state is Aborted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="UnsupportedCompression">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The compression format of a document enclosed in the job is not supported - the job state is
+                        Aborted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="DocumentFormatError">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The data format of a document enclosed in the job contains an error - the job state is Aborted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobCanceledByUser">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been canceled by a user, most likely by the owner of the job - the job state is
+                        Canceled.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobCanceledByOperator">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been canceled by the operator of the imaging system - the job state is Canceled.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="JobCanceledAtDevice">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been canceled by someone directly at the device panel - the job state is Canceled.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

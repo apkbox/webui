@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/print/monitoring"
+            xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/print/monitoring"
+            xmlns:client="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:device="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:resource="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <xsd:import schemaLocation="../../../../../data/client/ClientElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/client"/>
+
+    <xsd:import schemaLocation="../../../../../data/job/JobElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+
+    <xsd:import schemaLocation="../../../../../data/device/DeviceElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/device"/>
+                
+    <xsd:import schemaLocation="../../../../../data/resource/JobResources.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/resource"/>
+                
+    <!-- Retrieving a print job -->
+    <xsd:complexType name="LookupJobRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to lookup a print job in the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobClientReference"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="lookupJobRequest" type="tns:LookupJobRequest"/>
+
+    <xsd:complexType name="LookupJobResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the print jobs matching the lookup criteria.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:scheduledPrintJobs"/>
+            <xsd:element ref="device:unscheduledPrintJobs"/>
+            <xsd:element ref="job:batchJobs" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="lookupJobResponse" type="tns:LookupJobResponse"/>
+
+    <!-- monitoring the jobs present in the printer queue-->
+    <xsd:complexType name="GetJobsInPrinterQueueRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get a list of print jobs present in the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="device:fromJobRank" minOccurs="0"/>
+            <xsd:element ref="device:toJobRank" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobsInPrinterQueueRequest" type="tns:GetJobsInPrinterQueueRequest"/>
+
+    <xsd:complexType name="GetJobsInPrinterQueueResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the list of print jobs retrieved in the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:queuedJobCount"/>
+            <xsd:element ref="device:fromJobRank" minOccurs="0"/>
+            <xsd:element ref="device:toJobRank" minOccurs="0"/>
+            <xsd:element ref="job:printJobs" minOccurs="0"/>
+            <xsd:element ref="job:batchJobs" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobsInPrinterQueueResponse" type="tns:GetJobsInPrinterQueueResponse"/>
+
+    <!-- monitoring a specified list of jobs -->
+    <xsd:complexType name="GetJobsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get a specified list of print jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobIdentifiers"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobsRequest" type="tns:GetJobsRequest"/>
+
+    <xsd:complexType name="GetJobsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the specified list of print jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:scheduledPrintJobs"/>
+            <xsd:element ref="device:unscheduledPrintJobs"/>
+            <xsd:element ref="job:batchJobs" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobsResponse" type="tns:GetJobsResponse"/>
+
+
+    <!-- start the monitoring of job events occurring in the printer queue -->
+    <xsd:complexType name="StartMonitoringPrinterQueueRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to start the monitoring of job events occurring in the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="startMonitoringPrinterQueueRequest" type="tns:StartMonitoringPrinterQueueRequest"/>
+
+    <xsd:complexType name="StartMonitoringPrinterQueueResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response made to the start-monitoring-printer-queue request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="startMonitoringPrinterQueueResponse" type="tns:StartMonitoringPrinterQueueResponse"/>
+
+
+    <!-- pop the job events that have occurred in the printer queue -->
+    <xsd:complexType name="PopPrinterQueueEventsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to pop the events that have occurred in the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="popPrinterQueueEventsRequest" type="tns:PopPrinterQueueEventsRequest"/>
+
+    <xsd:complexType name="PopPrinterQueueEventsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the events that have occurred in the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:printerQueueEvents"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="popPrinterQueueEventsResponse" type="tns:PopPrinterQueueEventsResponse"/>
+
+
+    <!-- stop the monitoring of job events occurring in the printer queue -->
+    <xsd:complexType name="StopMonitoringPrinterQueueRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to stop the monitoring of job events occurring in the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="stopMonitoringPrinterQueueRequest" type="tns:StopMonitoringPrinterQueueRequest"/>
+
+    <xsd:complexType name="StopMonitoringPrinterQueueResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response made to the stop-monitoring-printer-queue request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="stopMonitoringPrinterQueueResponse" type="tns:StopMonitoringPrinterQueueResponse"/>
+
+    
+    <xsd:complexType name="GetJobResourceElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get a specified list of print jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobResourceElementsRequest" type="tns:GetJobResourceElementsRequest"/>
+
+    <xsd:complexType name="GetJobResourceElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the specified list of print jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="resource:jobResources"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getJobResourceElementsResponse" type="tns:GetJobResourceElementsResponse"/>
+    
+</xsd:schema>

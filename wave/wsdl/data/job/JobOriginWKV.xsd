@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of job origins -->
+    <xsd:simpleType name="JobOriginWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The enumeration of well known values for the origin of a stored job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="PrintJob">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The origin of the stored job is a print job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ScanJob">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The origin of the stored job is a scan job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
+

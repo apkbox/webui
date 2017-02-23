@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="Services.xsd"/>
+    <xsd:include schemaLocation="Devices.xsd"/>
+    <xsd:include schemaLocation="SystemStatus.xsd"/>
+    <xsd:include schemaLocation="SystemAccessDescription.xsd"/>
+    <xsd:include schemaLocation="SystemAccessStatus.xsd"/>
+
+    <!-- includes required by client schemas -->
+    <xsd:include schemaLocation="ServerVersion.xsd"/>
+
+    <xsd:complexType name="ImagingSystem">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of an imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:devices"/>
+            <xsd:element ref="tns:services"/>
+            <xsd:element ref="tns:systemStatus"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="imagingSystem" type="tns:ImagingSystem"/>
+
+    <xsd:complexType name="SystemAccess">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of the access to the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:systemAccessDescription" minOccurs="0"/>
+            <xsd:element ref="tns:systemAccessStatus" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="systemAccess" type="tns:SystemAccess"/>
+
+</xsd:schema>

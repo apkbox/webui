@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="PrinterMonitoringPort"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/printer/monitoring"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/printer/monitoring"
+                  xmlns:faults="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:documentation>Printer monitoring port - version 1.2</wsdl:documentation>
+
+    <wsdl:import location="../../../faults/Faults.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/faults"/>
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="PrinterMonitoringMessages.xsd"
+                        namespace="http://schemas.oce.com/ws/wave/services/printer/monitoring"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <!-- Media catalog elements -->
+    <wsdl:message name="getMediaCatalogElementsRequest">
+        <wsdl:part name="request" element="tns:getMediaCatalogElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getMediaCatalogElementsResponse">
+        <wsdl:part name="response" element="tns:getMediaCatalogElementsResponse"/>
+    </wsdl:message>
+
+    <!-- Media catalog updates -->
+    <wsdl:message name="getMediaCatalogUpdatesRequest">
+        <wsdl:part name="request" element="tns:getMediaCatalogUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getMediaCatalogUpdatesResponse">
+        <wsdl:part name="response" element="tns:getMediaCatalogUpdatesResponse"/>
+    </wsdl:message>
+
+
+    <!-- Printer elements -->
+    <wsdl:message name="getPrinterElementsRequest">
+        <wsdl:part name="request" element="tns:getPrinterElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getPrinterElementsResponse">
+        <wsdl:part name="response" element="tns:getPrinterElementsResponse"/>
+    </wsdl:message>
+
+    <!-- Printer updates -->
+    <wsdl:message name="getPrinterUpdatesRequest">
+        <wsdl:part name="request" element="tns:getPrinterUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getPrinterUpdatesResponse">
+        <wsdl:part name="response" element="tns:getPrinterUpdatesResponse"/>
+    </wsdl:message>
+
+
+    <!-- Media feeder elements -->
+    <wsdl:message name="getMediaFeederElementsRequest">
+        <wsdl:part name="request" element="tns:getMediaFeederElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getMediaFeederElementsResponse">
+        <wsdl:part name="response" element="tns:getMediaFeederElementsResponse"/>
+    </wsdl:message>
+
+    <!-- Media feeder updates -->
+    <wsdl:message name="getMediaFeederUpdatesRequest">
+        <wsdl:part name="request" element="tns:getMediaFeederUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getMediaFeederUpdatesResponse">
+        <wsdl:part name="response" element="tns:getMediaFeederUpdatesResponse"/>
+    </wsdl:message>
+
+
+    <!-- Marker feeder elements -->
+    <wsdl:message name="getMarkerFeederElementsRequest">
+        <wsdl:part name="request" element="tns:getMarkerFeederElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getMarkerFeederElementsResponse">
+        <wsdl:part name="response" element="tns:getMarkerFeederElementsResponse"/>
+    </wsdl:message>
+
+    <!-- Marker feeder updates -->
+    <wsdl:message name="getMarkerFeederUpdatesRequest">
+        <wsdl:part name="request" element="tns:getMarkerFeederUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getMarkerFeederUpdatesResponse">
+        <wsdl:part name="response" element="tns:getMarkerFeederUpdatesResponse"/>
+    </wsdl:message>
+
+
+    <!-- Marker elements -->
+    <wsdl:message name="getMarkerElementsRequest">
+        <wsdl:part name="request" element="tns:getMarkerElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getMarkerElementsResponse">
+        <wsdl:part name="response" element="tns:getMarkerElementsResponse"/>
+    </wsdl:message>
+
+    <!-- Marker updates -->
+    <wsdl:message name="getMarkerUpdatesRequest">
+        <wsdl:part name="request" element="tns:getMarkerUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getMarkerUpdatesResponse">
+        <wsdl:part name="response" element="tns:getMarkerUpdatesResponse"/>
+    </wsdl:message>
+
+
+    <!-- Finishing elements -->
+    <wsdl:message name="getFinishingElementsRequest">
+        <wsdl:part name="request" element="tns:getFinishingElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getFinishingElementsResponse">
+        <wsdl:part name="response" element="tns:getFinishingElementsResponse"/>
+    </wsdl:message>
+
+    <!-- Finishing updates -->
+    <wsdl:message name="getFinishingUpdatesRequest">
+        <wsdl:part name="request" element="tns:getFinishingUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getFinishingUpdatesResponse">
+        <wsdl:part name="response" element="tns:getFinishingUpdatesResponse"/>
+    </wsdl:message>
+
+
+    <!-- Delivering elements -->
+    <wsdl:message name="getDeliveringElementsRequest">
+        <wsdl:part name="request" element="tns:getDeliveringElementsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveringElementsResponse">
+        <wsdl:part name="response" element="tns:getDeliveringElementsResponse"/>
+    </wsdl:message>
+
+    <!-- Delivering updates -->
+    <wsdl:message name="getDeliveringUpdatesRequest">
+        <wsdl:part name="request" element="tns:getDeliveringUpdatesRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveringUpdatesResponse">
+        <wsdl:part name="response" element="tns:getDeliveringUpdatesResponse"/>
+    </wsdl:message>
+
+
+    <!-- Printer monitoring port -->
+    <wsdl:portType name="PrinterMonitoringPort">
+
+        <wsdl:operation name="getMediaCatalogElements">
+            <wsdl:input message="tns:getMediaCatalogElementsRequest"/>
+            <wsdl:output message="tns:getMediaCatalogElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMediaCatalogUpdates">
+            <wsdl:input message="tns:getMediaCatalogUpdatesRequest"/>
+            <wsdl:output message="tns:getMediaCatalogUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getPrinterElements">
+            <wsdl:input message="tns:getPrinterElementsRequest"/>
+            <wsdl:output message="tns:getPrinterElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getPrinterUpdates">
+            <wsdl:input message="tns:getPrinterUpdatesRequest"/>
+            <wsdl:output message="tns:getPrinterUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMediaFeederElements">
+            <wsdl:input message="tns:getMediaFeederElementsRequest"/>
+            <wsdl:output message="tns:getMediaFeederElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMediaFeederUpdates">
+            <wsdl:input message="tns:getMediaFeederUpdatesRequest"/>
+            <wsdl:output message="tns:getMediaFeederUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMarkerFeederElements">
+            <wsdl:input message="tns:getMarkerFeederElementsRequest"/>
+            <wsdl:output message="tns:getMarkerFeederElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMarkerFeederUpdates">
+            <wsdl:input message="tns:getMarkerFeederUpdatesRequest"/>
+            <wsdl:output message="tns:getMarkerFeederUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMarkerElements">
+            <wsdl:input message="tns:getMarkerElementsRequest"/>
+            <wsdl:output message="tns:getMarkerElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getMarkerUpdates">
+            <wsdl:input message="tns:getMarkerUpdatesRequest"/>
+            <wsdl:output message="tns:getMarkerUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getFinishingElements">
+            <wsdl:input message="tns:getFinishingElementsRequest"/>
+            <wsdl:output message="tns:getFinishingElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getFinishingUpdates">
+            <wsdl:input message="tns:getFinishingUpdatesRequest"/>
+            <wsdl:output message="tns:getFinishingUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getDeliveringElements">
+            <wsdl:input message="tns:getDeliveringElementsRequest"/>
+            <wsdl:output message="tns:getDeliveringElementsResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getDeliveringUpdates">
+            <wsdl:input message="tns:getDeliveringUpdatesRequest"/>
+            <wsdl:output message="tns:getDeliveringUpdatesResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+</wsdl:definitions>
+
+

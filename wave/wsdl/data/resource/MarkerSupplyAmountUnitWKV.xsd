@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <!-- enumeration of marker feeder states -->
+    <xsd:simpleType name="MarkerSupplyAmountUnitWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of used measure units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="ml">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Milliliter.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="ul">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Microliter.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="nl">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Nanoliter.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="pl">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Picoliter.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

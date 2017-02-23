@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MarkerSupplyDescription.xsd"/>
+
+    <!-- a list of marker supplies -->
+    <xsd:complexType name="MarkerSupplies">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of marker supplies.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerSupply" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerSupplies" type="tns:MarkerSupplies"/>
+
+    <!-- a marker supply -->
+    <xsd:complexType name="MarkerSupply">
+        <xsd:annotation>
+            <xsd:documentation>
+                A marker supply - description and status.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerSupplyDescription"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerSupply" type="tns:MarkerSupply"/>
+
+    <xsd:element name="markerSupplyLevel" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The level of remaining marker supply, in % of the total capacity.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

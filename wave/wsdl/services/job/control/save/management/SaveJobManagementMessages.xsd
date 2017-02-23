@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/save/management"
+            xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/save/management"
+            xmlns:client="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:repository="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:import schemaLocation="../../../../../data/client/ClientElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/client"/>
+
+    <xsd:import schemaLocation="../../../../../data/job/JobElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+
+    <xsd:import schemaLocation="../../../../../data/repository/RepositoryElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/repository"/>
+
+    <xsd:complexType name="StartJobRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to start a job stored in the job repository. A copy of the job is sent in the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="startJobRequest" type="tns:StartJobRequest"/>
+
+    <xsd:complexType name="StartJobResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the start-job request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:jobClientReference"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="startJobResponse" type="tns:StartJobResponse"/>
+
+    <xsd:complexType name="DeleteJobRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to delete a job stored in the job repository.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="deleteJobRequest" type="tns:DeleteJobRequest"/>
+
+    <xsd:complexType name="DeleteJobResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the delete-job request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="deleteJobResponse" type="tns:DeleteJobResponse"/>
+    
+</xsd:schema>

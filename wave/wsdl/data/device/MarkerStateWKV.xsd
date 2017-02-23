@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <xsd:simpleType name="MarkerStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known states for the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Available">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer marker unit is available for use.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MarkerSupplyLow">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer marker unit is low in supply.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MarkerSupplyEmpty">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer marker unit is missing some supply.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MarkerCartridgeNotPresent">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The printer marker unit is missing one or more marker cartridge.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Invalid">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        One or more marker cartridges are not in the expected location or incompatible.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

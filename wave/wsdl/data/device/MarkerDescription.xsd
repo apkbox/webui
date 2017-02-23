@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MarkerTechnologyWKV.xsd"/>
+
+    <!-- description of the printer marker unit -->
+    <xsd:complexType name="MarkerDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerTechnology"/>
+            <xsd:element ref="tns:markerMargins"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerDescription" type="tns:MarkerDescription"/>
+
+    <xsd:element name="markerTechnology">
+        <xsd:annotation>
+            <xsd:documentation>
+                The technology used by the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:MarkerTechnologyWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:complexType name="MarkerMargins">
+        <xsd:annotation>
+            <xsd:documentation>
+                The margins of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerNorthMargin"/>
+            <xsd:element ref="tns:markerSouthMargin"/>
+            <xsd:element ref="tns:markerWestMargin"/>
+            <xsd:element ref="tns:markerEastMargin"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerMargins" type="tns:MarkerMargins"/>
+
+    <xsd:element name="markerNorthMargin" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The north margin of the printer marker unit, in 1/100 mm.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="markerSouthMargin" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The south margin of the printer marker unit, in 1/100 mm.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="markerWestMargin" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The west margin of the printer marker unit, in 1/100 mm.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="markerEastMargin" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The east margin of the printer marker unit, in 1/100 mm.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

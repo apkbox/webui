@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- enumeration of output tray states -->
+    <xsd:simpleType name="OutputTrayStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                An enumeration of well known output tray states
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Available">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is present and available for use.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="AlmostFull">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is almost full.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Full">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is full.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="NotPresent">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The output tray is not present.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

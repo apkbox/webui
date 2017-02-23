@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="Faults"
+                  targetNamespace="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="FaultMessages.xsd" namespace="http://schemas.oce.com/ws/wave/faults"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="accessDeniedFault">
+        <wsdl:part name="accessDeniedFaultInfo" element="tns:accessDeniedFaultInfo"/>
+    </wsdl:message>
+
+    <wsdl:message name="sessionDeniedFault">
+        <wsdl:part name="sessionDeniedFaultInfo" element="tns:sessionDeniedFaultInfo"/>
+    </wsdl:message>
+
+    <wsdl:message name="jobDownloadFault">
+        <wsdl:part name="jobDownloadFaultInfo" element="tns:jobDownloadFaultInfo"/>
+    </wsdl:message>
+
+    <wsdl:message name="jobManagementFault">
+        <wsdl:part name="jobManagementFaultInfo" element="tns:jobManagementFaultInfo"/>
+    </wsdl:message>
+
+    <wsdl:message name="systemAccessFault">
+        <wsdl:part name="systemAccessFaultInfo" element="tns:systemAccessFaultInfo"/>
+    </wsdl:message>
+
+</wsdl:definitions>
+

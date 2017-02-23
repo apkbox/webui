@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:resource="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../resource/ResourceElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/resource"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MarkerFeederStateWKV.xsd"/>
+                
+    <xsd:complexType name="MarkerFeederStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The status of a marker feeder.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerFeederState"/>
+            <xsd:element ref="resource:markerSupplyDescription"/>
+            <xsd:element ref="resource:markerSupplyLevel" minOccurs="0"/>
+            <xsd:element ref="tns:remainingMarkerSupply" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerFeederStatus" type="tns:MarkerFeederStatus"/>
+
+    <xsd:element name="markerFeederState">
+        <xsd:annotation>
+            <xsd:documentation>
+                The state of the marker feeder unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:MarkerFeederStateWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="remainingMarkerSupply" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The amount of marker supply remaining in a marker feeder unit, in gr for a solid marker supply, or in
+                ml for a liquid marker supply.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

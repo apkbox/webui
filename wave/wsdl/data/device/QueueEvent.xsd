@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../job/JobElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+                
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="QueueEntry.xsd"/>
+    <xsd:include schemaLocation="QueueEventTypeWKV.xsd"/>
+
+    <!-- a list of printer queue events -->
+    <xsd:complexType name="PrinterQueueEvents">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of printer queue events.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printerQueueEvent" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="printerQueueEvents" type="tns:PrinterQueueEvents"/>
+
+    <!-- a generic queue event -->
+    <xsd:complexType name="QueueEvent">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a job event that has occurred in a device queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:fromJobRank" minOccurs="0"/>
+            <xsd:element ref="tns:toJobRank" minOccurs="0"/>
+            <xsd:element ref="tns:jobRank" minOccurs="0"/>
+            <xsd:element ref="tns:oldJobRank" minOccurs="0"/>
+            <xsd:element ref="tns:newJobRank" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="event" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    The type of event that has occurred in a device queue.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+                <xsd:union memberTypes="xsd:NMTOKEN tns:QueueEventTypeWKV"/>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <!-- a printer queue event -->
+    <xsd:complexType name="PrinterQueueEvent">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a job event that has occurred in a printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:QueueEvent">
+                <xsd:sequence>
+                    <xsd:element ref="job:printJobs" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="printerQueueEvent" type="tns:PrinterQueueEvent"/>
+
+    <xsd:element name="fromJobRank" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The rank of the first job in the queue concerned by a JobEnumerationStarted, JobEnumerationProceeded,
+                or JobEnumerationFinished event, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="toJobRank" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The rank of the last job in the queue concerned by a JobEnumerationStarted, JobEnumerationProceeded,
+                or JobEnumerationFinished event, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="oldJobRank" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The old rank of a job in the queue, concerned by a JobMoved event, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="newJobRank" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The new rank of a job in the queue, concerned by a JobMoved event, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

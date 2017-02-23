@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:common="http://schemas.oce.com/ws/wave/data/common"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../common/CommonElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/common"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="FinisherDescription.xsd"/>
+    <xsd:include schemaLocation="FinisherStatus.xsd"/>
+    <xsd:include schemaLocation="FinisherProcessingSupported.xsd"/>
+
+    <!-- a list of finishing units -->
+    <xsd:complexType name="FinishingUnits">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of finishing units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:finisher" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="unitCount" type="xsd:int" use="required"/>
+        <xsd:attribute ref="common:reportedElements" use="optional"/>
+    </xsd:complexType>
+    <xsd:element name="finishingUnits" type="tns:FinishingUnits"/>
+
+    <!-- a finishing unit -->
+    <xsd:complexType name="Finisher">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a finishing unit. A finishing unit is addressed by a print device for some post
+                processing on a printed job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:finisherDescription" minOccurs="0"/>
+            <xsd:element ref="tns:finisherStatus" minOccurs="0"/>
+            <xsd:element ref="tns:finisherProcessingSupported" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="unitNumber" type="xsd:int" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="finisher" type="tns:Finisher"/>
+
+</xsd:schema>

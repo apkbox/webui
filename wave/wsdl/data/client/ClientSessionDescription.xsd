@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="Localization.xsd"/>
+
+    <!-- description of a client session -->
+    <xsd:complexType name="ClientSessionDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:localization"/>
+            <xsd:element ref="tns:clientInterfaceVersion"/>
+            <xsd:element ref="tns:serverInterfaceVersion"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="clientSessionDescription" type="tns:ClientSessionDescription"/>
+
+    <xsd:element name="clientInterfaceVersion" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The version of the Oce Web Services interfaces used by the client.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="serverInterfaceVersion" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The version of the Oce Web Services interfaces implemented on the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

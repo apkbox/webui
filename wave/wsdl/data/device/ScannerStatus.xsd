@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="ScannerStateWKV.xsd"/>
+
+    <!-- status of a scanner -->
+    <xsd:complexType name="ScannerStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a scanner status.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:scannerIsAcceptingJobs"/>
+            <xsd:element ref="tns:scannerState"/>
+            <xsd:element ref="tns:scannerStateReasons"/>
+            <xsd:element ref="tns:scannerUpTime"/>
+            <xsd:element ref="tns:scannerCurrentTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="scannerStatus" type="tns:ScannerStatus"/>
+
+    <!-- a list of scanner state reasons -->
+    <xsd:complexType name="ScannerStateReasons">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of scanner state reasons.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:scannerStateReason" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="scannerStateReasons" type="tns:ScannerStateReasons"/>
+
+    <xsd:element name="scannerIsAcceptingJobs" type="xsd:boolean">
+        <xsd:annotation>
+            <xsd:documentation>
+                Whether a scanner is accepting jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="scannerState">
+        <xsd:annotation>
+            <xsd:documentation>
+                The state of a scanner.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:ScannerStateWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="scannerStateReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                A reason for a scanner state.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:ScannerStateReasonWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="scannerUpTime" type="xsd:dateTime">
+        <xsd:annotation>
+            <xsd:documentation>
+                The date and time when a scanner has been powered up.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="scannerCurrentTime" type="xsd:dateTime">
+        <xsd:annotation>
+            <xsd:documentation>
+                The current date and time on a scanner.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="ClientSessionManagementService"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/client/session/management"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/client/session/management"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:import location="services/client/session/management/ClientSessionManagementBinding.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/client/session/management"/>
+
+    <wsdl:service name="ClientSessionManagementService">
+        <wsdl:port name="ClientSessionManagementPort" binding="tns:ClientSessionManagementBinding">
+            <soap:address location="http://localhost/eip/wave/ClientSessionManagementService"/>
+        </wsdl:port>
+    </wsdl:service>
+    
+</wsdl:definitions>

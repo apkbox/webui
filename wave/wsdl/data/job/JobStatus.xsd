@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:resource="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../resource/ResourceElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/resource"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="JobIdentification.xsd"/>
+    <xsd:include schemaLocation="JobStateWKV.xsd"/>
+    <xsd:include schemaLocation="JobOperationWKV.xsd"/>
+
+    <!-- job status -->
+    <xsd:complexType name="JobStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a job status.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobId"/>
+            <xsd:element ref="tns:jobUri"/>
+            <xsd:element ref="tns:jobState"/>
+            <xsd:element ref="tns:jobStateReasons"/>
+            <xsd:element ref="tns:jobOperationSupported"/>
+            <xsd:element ref="tns:dateTimeAtCreation"/>
+            <xsd:element ref="tns:dateTimeAtCompleted" minOccurs="0"/>
+            <xsd:element ref="tns:activeMediaSupply" minOccurs="0"/>
+            <xsd:element ref="tns:missingMediaSupplies" minOccurs="0"/>
+            <xsd:element ref="tns:missingMarkerSupplies" minOccurs="0"/>
+            <xsd:element ref="tns:jobClientReference" minOccurs="0"/>
+            <xsd:element ref="tns:isBatchJob" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobStatus" type="tns:JobStatus"/>
+
+    <!-- a list of job state reasons -->
+    <xsd:complexType name="JobStateReasons">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of job state reasons.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobStateReason" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobStateReasons" type="tns:JobStateReasons"/>
+
+    <xsd:complexType name="JobOperationSupported">
+        <xsd:annotation>
+            <xsd:documentation>
+                The collection of operations supported by a job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobOperation" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="jobOperationSupported" type="tns:JobOperationSupported"/>
+
+    <xsd:element name="jobState">
+        <xsd:annotation>
+            <xsd:documentation>
+                The state of a job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:JobStateWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="jobStateReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                A reason about a job state.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:JobStateReasonWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="jobOperation">
+        <xsd:annotation>
+            <xsd:documentation>
+                An operation supported by a job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:JobOperationWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="dateTimeAtCreation" type="xsd:dateTime">
+        <xsd:annotation>
+            <xsd:documentation>
+                The date and the time when the job has been created in the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="dateTimeAtCompleted" type="xsd:dateTime">
+        <xsd:annotation>
+            <xsd:documentation>
+                The date and the time when the job has been completed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="activeMediaSupply" type="resource:MediaSupply">
+        <xsd:annotation>
+            <xsd:documentation>
+                The media supply currently used to print a job.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="missingMediaSupplies" type="resource:MediaSupplies">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of media supplies that are needed to print a job.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="missingMarkerSupplies" type="resource:MarkerSupplies">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of marker supplies that are needed to print a job.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="isBatchJob" type="xsd:boolean">
+        <xsd:annotation>
+            <xsd:documentation>
+                Whether the job has part jobs or not.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    
+</xsd:schema>

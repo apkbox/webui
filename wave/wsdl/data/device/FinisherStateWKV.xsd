@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of possible states for the presence of a finishing unit -->
+    <xsd:simpleType name="FinisherPresentWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of well known values for the finisher present element.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="NotPresent">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is not present on the print device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="PresentOn">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is present on the print device, and is powered on.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="PresentOff">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is present on the print device, and is powered off.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- enumeration of finisher states -->
+    <xsd:simpleType name="FinisherStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of well known states for a finishing unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Idle">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is Idle.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Processing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is processing a job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Stopped">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finishing unit is stopped, and it requires user attention.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- enumeration of finisher state reasons -->
+    <xsd:simpleType name="FinisherStateReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of well known values for a finisher state reason.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Initializing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is initializing, and it cannot accept new jobs yet - the finisher state is Idle.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Ready">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is ready to accept new jobs - the finisher state is Idle.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Sleeping">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is sleeping (suspended to RAM or to Disk) - the finisher state is Idle.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Folding">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is folding a job - the finisher state is Processing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Shutdown">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is preparing for a shutdown - the finisher state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Offline">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is offline, and it cannot accept jobs - the finisher state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Maintenance">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is in maintenance, and it cannot accept jobs - the finisher state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="MediaJam">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is blocked because of a media jam - the finisher state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="OutputAreaFull">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is blocked because an output delivery is full - the finisher state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="DoorOpen">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is blocked because a door is opened - the finisher state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is blocked for an unknown reason - the finisher state is Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="SavingEnergy">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is saving energy (low power mode) - the finisher state is Idle or Stopped.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="OutputAreaAlmostFull">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The finisher is getting low in output delivery capacity - not related to any finisher state.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

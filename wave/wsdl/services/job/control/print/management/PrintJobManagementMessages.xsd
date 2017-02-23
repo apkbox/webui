@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/print/management"
+            xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/print/management"
+            xmlns:client="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:repository="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:import schemaLocation="../../../../../data/client/ClientElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/client"/>
+
+    <xsd:import schemaLocation="../../../../../data/repository/RepositoryElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/repository"/>
+
+    <xsd:import schemaLocation="../../../../../data/job/JobElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+
+    <!-- cancel a print job -->
+    <xsd:complexType name="CancelJobRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to cancel a print job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="cancelJobRequest" type="tns:CancelJobRequest"/>
+
+    <xsd:complexType name="CancelJobResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the cancel-job request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:jobStatus"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="cancelJobResponse" type="tns:CancelJobResponse"/>
+
+    <!-- promote a print job -->
+    <xsd:complexType name="PromoteJobRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to promote a print job at the top of the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="promoteJobRequest" type="tns:PromoteJobRequest"/>
+
+    <xsd:complexType name="PromoteJobResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the promote-job request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:jobStatus"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="promoteJobResponse" type="tns:PromoteJobResponse"/>
+
+    <!-- hold a print job -->
+    <xsd:complexType name="HoldJobRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to hold a print job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="holdJobRequest" type="tns:HoldJobRequest"/>
+
+    <xsd:complexType name="HoldJobResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the hold-job request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:jobStatus"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="holdJobResponse" type="tns:HoldJobResponse"/>
+
+    <!-- release a print job -->
+    <xsd:complexType name="ReleaseJobRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to release a print job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="releaseJobRequest" type="tns:ReleaseJobRequest"/>
+
+    <xsd:complexType name="ReleaseJobResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the release-job request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:jobStatus"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="releaseJobResponse" type="tns:ReleaseJobResponse"/>
+
+    <!-- hold the printer queue -->
+    <xsd:complexType name="HoldQueueRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to hold the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="holdQueueRequest" type="tns:HoldQueueRequest"/>
+
+    <xsd:complexType name="HoldQueueResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the hold-queue request.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+    <xsd:element name="holdQueueResponse" type="tns:HoldQueueResponse"/>
+
+    <!-- release the printer queue -->
+    <xsd:complexType name="ReleaseQueueRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to release the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="releaseQueueRequest" type="tns:ReleaseQueueRequest"/>
+
+    <xsd:complexType name="ReleaseQueueResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the release-queue request.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+    <xsd:element name="releaseQueueResponse" type="tns:ReleaseQueueResponse"/>
+
+    <!-- clear the printer queue -->
+    <xsd:complexType name="ClearQueueRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to clear the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="clearQueueRequest" type="tns:ClearQueueRequest"/>
+
+    <xsd:complexType name="ClearQueueResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the clear-queue request.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+    <xsd:element name="clearQueueResponse" type="tns:ClearQueueResponse"/>
+
+</xsd:schema>

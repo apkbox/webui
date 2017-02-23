@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="ClientSessionStateWKV.xsd"/>
+
+    <!-- status of a client session -->
+    <xsd:complexType name="ClientSessionStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The status of a client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:sessionState"/>
+            <xsd:element ref="tns:sessionClosingReason" minOccurs="0"/>
+            <xsd:element ref="tns:sessionClosingDelay" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="clientSessionStatus" type="tns:ClientSessionStatus"/>
+
+    <xsd:element name="sessionState">
+        <xsd:annotation>
+            <xsd:documentation>
+                The state of the client session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:SessionStateWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="sessionClosingReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reason why the client session is about to be closed by the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="tns:SessionClosingReasonWKV xsd:NMTOKEN"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="sessionClosingDelay" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The delay before the client session is forcibly closed by the imaging system, in seconds.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

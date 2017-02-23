@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="JobDescription.xsd"/>
+    <xsd:include schemaLocation="JobProcessing.xsd"/>
+    <xsd:include schemaLocation="JobAccounting.xsd"/>
+    <xsd:include schemaLocation="DocumentProcessing.xsd"/>
+
+    <!-- a generic job ticket -->
+    <xsd:complexType name="JobTicket">
+        <xsd:annotation>
+            <xsd:documentation>
+                The element of a job ticket. A job ticket specifies the job to process and how to process it.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobDescription"/>
+            <xsd:element ref="tns:jobProcessing" minOccurs="0"/>
+            <xsd:element ref="tns:jobAccounting" minOccurs="0"/>
+            <xsd:element ref="tns:defaultDocumentProcessing" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- a print job ticket -->
+    <xsd:complexType name="PrintJobTicket">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a print job ticket. A print job ticket specifies the job to print and how to print it.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:JobTicket">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="printJobTicket" type="tns:PrintJobTicket"/>
+
+    <xsd:element name="defaultDocumentProcessing" type="tns:DocumentProcessing">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list processing directives that specifies how a document shall be processed by default.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

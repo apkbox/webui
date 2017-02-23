@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/services/printer/monitoring"
+            xmlns:tns="http://schemas.oce.com/ws/wave/services/printer/monitoring"
+            xmlns:client="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:resource="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:device="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <xsd:import schemaLocation="../../../data/client/ClientElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/client"/>
+
+    <xsd:import schemaLocation="../../../data/resource/ResourceElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/resource"/>
+
+    <xsd:import schemaLocation="../../../data/device/DeviceElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/device"/>
+
+
+    <!-- Media catalog elements -->
+    <xsd:complexType name="GetMediaCatalogElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the media catalog elements of the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMediaCatalogElementsRequest" type="tns:GetMediaCatalogElementsRequest"/>
+
+    <xsd:complexType name="GetMediaCatalogElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the media catalog elements of the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="resource:mediaCatalog"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMediaCatalogElementsResponse" type="tns:GetMediaCatalogElementsResponse"/>
+
+
+    <!-- Media catalog updates -->
+    <xsd:complexType name="GetMediaCatalogUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updates made to the media catalog elements of the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMediaCatalogUpdatesRequest" type="tns:GetMediaCatalogUpdatesRequest"/>
+
+    <xsd:complexType name="GetMediaCatalogUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the updates made to the media catalog elements of the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="resource:mediaCatalog" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMediaCatalogUpdatesResponse" type="tns:GetMediaCatalogUpdatesResponse"/>
+
+
+    <!-- Printer elements -->
+    <xsd:complexType name="GetPrinterElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the elements of the print device (configuration and status).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getPrinterElementsRequest" type="tns:GetPrinterElementsRequest"/>
+
+    <xsd:complexType name="GetPrinterElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the elements of the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:printer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getPrinterElementsResponse" type="tns:GetPrinterElementsResponse"/>
+
+
+    <!-- Printer updates -->
+    <xsd:complexType name="GetPrinterUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updates made to the elements of the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getPrinterUpdatesRequest" type="tns:GetPrinterUpdatesRequest"/>
+
+    <xsd:complexType name="GetPrinterUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the updates made to the elements of the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:printer" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getPrinterUpdatesResponse" type="tns:GetPrinterUpdatesResponse"/>
+
+
+    <!-- Media feeder elements -->
+    <xsd:complexType name="GetMediaFeederElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the elements of the media feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMediaFeederElementsRequest" type="tns:GetMediaFeederElementsRequest"/>
+
+    <xsd:complexType name="GetMediaFeederElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the elements of the media feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:mediaFeederUnits"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMediaFeederElementsResponse" type="tns:GetMediaFeederElementsResponse"/>
+
+
+    <!-- Media feeder updates -->
+    <xsd:complexType name="GetMediaFeederUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updates made to the elements of the media feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMediaFeederUpdatesRequest" type="tns:GetMediaFeederUpdatesRequest"/>
+
+    <xsd:complexType name="GetMediaFeederUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the updates made to the elements of the media feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:mediaFeederUnits" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMediaFeederUpdatesResponse" type="tns:GetMediaFeederUpdatesResponse"/>
+
+
+    <!-- Marker feeder elements -->
+    <xsd:complexType name="GetMarkerFeederElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the elements of the marker feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMarkerFeederElementsRequest" type="tns:GetMarkerFeederElementsRequest"/>
+
+    <xsd:complexType name="GetMarkerFeederElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the elements of the marker feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:markerFeederUnits"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMarkerFeederElementsResponse" type="tns:GetMarkerFeederElementsResponse"/>
+
+
+    <!-- Marker feeder updates -->
+    <xsd:complexType name="GetMarkerFeederUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updates made to the elements of the marker feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMarkerFeederUpdatesRequest" type="tns:GetMarkerFeederUpdatesRequest"/>
+
+    <xsd:complexType name="GetMarkerFeederUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the updates made to the elements of the marker feeder units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:markerFeederUnits" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMarkerFeederUpdatesResponse" type="tns:GetMarkerFeederUpdatesResponse"/>
+
+
+    <!-- Marker elements -->
+    <xsd:complexType name="GetMarkerElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the elements of the printer marker unit description and status).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMarkerElementsRequest" type="tns:GetMarkerElementsRequest"/>
+
+    <xsd:complexType name="GetMarkerElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the elements of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:marker"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMarkerElementsResponse" type="tns:GetMarkerElementsResponse"/>
+
+
+    <!-- Marker updates -->
+    <xsd:complexType name="GetMarkerUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updates made to the elements of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMarkerUpdatesRequest" type="tns:GetMarkerUpdatesRequest"/>
+
+    <xsd:complexType name="GetMarkerUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the updates made to the elements of the printer marker unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:marker" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getMarkerUpdatesResponse" type="tns:GetMarkerUpdatesResponse"/>
+
+
+    <!-- Finishing elements -->
+    <xsd:complexType name="GetFinishingElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the elements of the finishing units addressed by the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getFinishingElementsRequest" type="tns:GetFinishingElementsRequest"/>
+
+    <xsd:complexType name="GetFinishingElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the elements of the finishing units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:finishingUnits"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getFinishingElementsResponse" type="tns:GetFinishingElementsResponse"/>
+
+
+    <!-- Finishing updates -->
+    <xsd:complexType name="GetFinishingUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updates made to the elements of the finishing units addressed by the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getFinishingUpdatesRequest" type="tns:GetFinishingUpdatesRequest"/>
+
+    <xsd:complexType name="GetFinishingUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the updates made to the elements of the finishing units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:finishingUnits" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getFinishingUpdatesResponse" type="tns:GetFinishingUpdatesResponse"/>
+
+
+    <!-- Delivering elements -->
+    <xsd:complexType name="GetDeliveringElementsRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the elements of the delivering units addressed by the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getDeliveringElementsRequest" type="tns:GetDeliveringElementsRequest"/>
+
+    <xsd:complexType name="GetDeliveringElementsResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the elements of the delivering units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:deliveringUnits"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getDeliveringElementsResponse" type="tns:GetDeliveringElementsResponse"/>
+
+
+    <!-- Delivering updates -->
+    <xsd:complexType name="GetDeliveringUpdatesRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to get the updates made to the elements of the delivering units addressed by the print device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getDeliveringUpdatesRequest" type="tns:GetDeliveringUpdatesRequest"/>
+
+    <xsd:complexType name="GetDeliveringUpdatesResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the updates made to the elements of the delivering units.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:deliveringUnits" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getDeliveringUpdatesResponse" type="tns:GetDeliveringUpdatesResponse"/>
+
+</xsd:schema>

@@ -1,0 +1,53 @@
+﻿body {
+	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	font-size: 2.0em;
+}
+
+
+.file-list {
+	min-width: 50%;
+}
+
+.file-list TD {
+}
+
+.file-list TD {
+	border-bottom: 1px silver solid;
+}
+
+
+.header {
+	padding: 10px;
+	width: 100%;
+	background-color: azure;
+	border-bottom: solid 1px gray;
+}
+
+.header-printer-model {
+	font-size: 36pt;
+	font-weight: bold;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.menu {
+	float: left;
+	border-right:
+	solid 1px gray;
+	height: 400px;
+	padding: 10px;
+	background-color: #efefef
+}
+
+.content {
+	padding-top: 10pt;
+	float: right;
+	width: 70%;
+}
+
+.field {
+	margin-bottom: 8pt;
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="DeviceProcessingSupported.xsd"/>
+
+    <!-- description of a printer -->
+    <xsd:complexType name="PrinterDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of a printer device.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printerName"/>
+            <xsd:element ref="tns:printerInfo"/>
+            <xsd:element ref="tns:printerLocation"/>
+            <xsd:element ref="tns:printerModel"/>
+            <xsd:element ref="tns:printerMakeAndModel"/>
+            <xsd:element ref="tns:printerVersion"/>
+            <xsd:element ref="tns:colorSupported"/>
+            <xsd:element ref="tns:documentFormatSupported"/>
+            <xsd:element ref="tns:batchModeSupported" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="printerDescription" type="tns:PrinterDescription"/>
+
+    <xsd:element name="printerName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The friendly name of the printer, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="printerInfo" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                Some textual information about the printer device, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="printerLocation" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The geographical location of the printer device at a customer site, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="printerModel" type="xsd:NMTOKEN">
+        <xsd:annotation>
+            <xsd:documentation>
+                The printer model, as defined by the manufacturer of the device.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="printerMakeAndModel" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The make and the model of the printer device, as it is meant to be displayed. It may contain the
+                trademark of the reseller of the device.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="printerVersion" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The version of the printer.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

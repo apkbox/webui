@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of media feeder states -->
+    <xsd:simpleType name="MediaFeederStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                An enumeration of well known media feeder states
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            
+            <xsd:enumeration value="Opened">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The media feeder unit is opened.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Empty">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The media feeder unit is closed and empty.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Loaded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The media feeder unit is closed and loaded with some media supply.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="NotPresent">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The media feeder unit is not present.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- enumeration of media feed directions -->
+    <xsd:simpleType name="MediaFeedDirectionWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known media feed directions.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="ShortEdgeFirst">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Cut sheets are loaded short edge first.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="LongEdgeFirst">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Cut sheets are loaded long edge first.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

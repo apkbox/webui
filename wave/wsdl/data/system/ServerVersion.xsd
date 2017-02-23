@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/system"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/system"
+            elementFormDefault="qualified">
+
+    <xsd:complexType name="ServerVersion">
+        <xsd:annotation>
+            <xsd:documentation>
+                The version of the WAVE server.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:currentInterfaceVersion"/>
+            <xsd:element ref="tns:minimumSupportedInterfaceVersion"/>
+        </xsd:sequence>
+    </xsd:complexType>
+	<xsd:element name="serverVersion" type="tns:ServerVersion"/>
+
+    <xsd:element name="currentInterfaceVersion" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The version of the WAVE interfaces currently implemented on the print system.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="minimumSupportedInterfaceVersion" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The minimum version of the WAVE interfaces supported by the print system implementation.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+</xsd:schema>

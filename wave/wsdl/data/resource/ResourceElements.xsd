@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by client schemas -->
+    <xsd:include schemaLocation="MediaCatalog.xsd"/>
+    <xsd:include schemaLocation="MediaSupplies.xsd"/>
+    <xsd:include schemaLocation="MarkerSupplies.xsd"/>
+
+</xsd:schema>

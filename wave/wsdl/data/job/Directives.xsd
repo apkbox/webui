@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- a setting - processing directive -->
+    <xsd:complexType name="Setting">
+        <xsd:annotation>
+            <xsd:documentation>
+                A key-value pair of information defining a processing directive.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="name" type="xsd:NMTOKEN" use="required"/>
+        <xsd:attribute name="value" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="setting" type="tns:Setting"/>
+
+    <!-- an accounting directive -->
+    <xsd:complexType name="Accounting">
+        <xsd:annotation>
+            <xsd:documentation>
+                A key-value pair of information defining an accounting directive.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="name" type="xsd:NMTOKEN" use="required"/>
+        <xsd:attribute name="value" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="accounting" type="tns:Accounting"/>
+
+</xsd:schema>

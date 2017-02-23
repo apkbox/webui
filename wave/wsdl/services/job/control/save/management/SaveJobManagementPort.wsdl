@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="SaveJobManagementPort"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/save/management"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/save/management"
+                  xmlns:faults="http://schemas.oce.com/ws/wave/faults"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:import location="../../../../../faults/Faults.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/faults"/>
+
+    <wsdl:types>
+        <xsd:schema>                        
+            <xsd:import schemaLocation="SaveJobManagementMessages.xsd"
+                        namespace="http://schemas.oce.com/ws/wave/services/job/control/save/management"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="startJobRequest">
+        <wsdl:part name="request" element="tns:startJobRequest"/>
+    </wsdl:message>
+    <wsdl:message name="startJobResponse">
+        <wsdl:part name="response" element="tns:startJobResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="deleteJobRequest">
+        <wsdl:part name="request" element="tns:deleteJobRequest"/>
+    </wsdl:message>
+    <wsdl:message name="deleteJobResponse">
+        <wsdl:part name="response" element="tns:deleteJobResponse"/>
+    </wsdl:message>
+    
+    <wsdl:portType name="SaveJobManagementPort">
+        <wsdl:operation name="startJob">
+            <wsdl:input message="tns:startJobRequest"/>
+            <wsdl:output message="tns:startJobResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="jobManagementFault" message="faults:jobManagementFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="deleteJob">
+            <wsdl:input message="tns:deleteJobRequest"/>
+            <wsdl:output message="tns:deleteJobResponse"/>
+            <wsdl:fault name="sessionDeniedFault" message="faults:sessionDeniedFault"/>
+            <wsdl:fault name="accessDeniedFault" message="faults:accessDeniedFault"/>
+            <wsdl:fault name="jobManagementFault" message="faults:jobManagementFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+        
+</wsdl:definitions>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="PrintJobMonitoringService"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/control/print/monitoring"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/control/print/monitoring"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+                      
+    <wsdl:import location="services/job/control/print/monitoring/PrintJobMonitoringBinding.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/job/control/print/monitoring"/>
+
+    <wsdl:service name="PrintJobMonitoringService">
+        <wsdl:port name="PrintJobMonitoringPort" binding="tns:PrintJobMonitoringBinding">
+            <soap:address location="http://localhost/eip/wave/PrintJobMonitoringService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
+
+
+

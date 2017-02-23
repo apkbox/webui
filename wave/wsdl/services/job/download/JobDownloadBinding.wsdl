@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="JobDownloadBinding"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/job/download"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/job/download"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+
+    <wsdl:import location="../../policies/Policies.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/policies"/>
+
+    <wsdl:import location="JobDownloadPort.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/job/download"/>
+
+    <wsdl:binding name="JobDownloadBinding" type="tns:JobDownloadPort">
+        <wsp:PolicyReference URI="http://schemas.oce.com/ws/wave/policies/MTOM" wsdl:required="true"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="lookupJob">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/download/lookupJob"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="openJobDownloadSession">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/download/openJobDownloadSession"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobDownloadFault">
+                <soap:fault name="jobDownloadFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="pullDocumentData">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/download/pullDocumentData"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobDownloadFault">
+                <soap:fault name="jobDownloadFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="pullDocumentDataDelivered">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/download/pullDocumentDataDelivered"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobDownloadFault">
+                <soap:fault name="jobDownloadFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="closeJobDownloadSession">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/job/download/closeJobDownloadSession"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="jobDownloadFault">
+                <soap:fault name="jobDownloadFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+</wsdl:definitions>
+

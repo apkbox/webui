@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/faults"
+            xmlns:tns="http://schemas.oce.com/ws/wave/faults"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of job denied reasons -->
+    <xsd:simpleType name="JobDeniedReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known reasons why a job submission operation can be denied.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="NoSuchJobUri">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The specified job URI could not be found on the imaging system.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="NoSuchDocumentNumber">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The specified document number could not be found on the imaging system.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="NotReadyToAddDocument">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job submission service provider is not ready for adding a new document to the job.
+                        The previous document is likely not committed.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="NotReadyToPushDocumentData">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job submission service provider is not ready for accepting document data.
+                        The document has likely been already committed.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="NotReadyToCommitDocument">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job submission service provider is not ready for committing a document.
+                        The document data has likely not been delivered yet.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="SpoolAreaFull">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The spool area is full.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="TransferFailure">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        An error has occurred during the transfer of document data.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job submission operation was denied for another reason.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

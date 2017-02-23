@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions name="ClientSessionManagementBinding"
+                  targetNamespace="http://schemas.oce.com/ws/wave/services/client/session/management"
+                  xmlns:tns="http://schemas.oce.com/ws/wave/services/client/session/management"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:import location="ClientSessionManagementPort.wsdl"
+                 namespace="http://schemas.oce.com/ws/wave/services/client/session/management"/>
+    
+    <wsdl:binding name="ClientSessionManagementBinding" type="tns:ClientSessionManagementPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="openClientSession">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/client/session/management/openClientSession"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="accessDeniedFault">
+                <soap:fault name="accessDeniedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="closeClientSession">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/client/session/management/closeClientSession"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getSessionElements">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/client/session/management/getSessionElements"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getSessionUpdates">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/client/session/management/getSessionUpdates"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="setPreferredLocalization">
+            <soap:operation soapAction="http://schemas.oce.com/ws/wave/services/client/session/management/setPreferredLocalization"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="sessionDeniedFault">
+                <soap:fault name="sessionDeniedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+</wsdl:definitions>

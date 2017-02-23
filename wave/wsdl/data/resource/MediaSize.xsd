@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MediaSizeDescription.xsd"/>
+
+    <!-- a list of roll sizes -->
+    <xsd:complexType name="RollSizes">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of roll sizes
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:rollSize" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="rollSizes" type="tns:RollSizes"/>
+
+    <!-- a list of sheet sizes -->
+    <xsd:complexType name="SheetSizes">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of sheet sizes
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:sheetSize" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="sheetSizes" type="tns:SheetSizes"/>
+
+    <!-- a roll size -->
+    <xsd:complexType name="RollSize">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a roll size.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:rollSizeDescription"/>
+        </xsd:sequence>
+        <xsd:attribute ref="tns:rollSizeId" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="rollSize" type="tns:RollSize"/>
+
+    <!-- a sheet size -->
+    <xsd:complexType name="SheetSize">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a sheet size.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:sheetSizeDescription"/>
+        </xsd:sequence>
+        <xsd:attribute ref="tns:sheetSizeId" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="sheetSize" type="tns:SheetSize"/>
+
+    <xsd:attribute name="rollSizeId" type="xsd:ID">
+        <xsd:annotation>
+            <xsd:documentation>
+                The identifier of a roll size element in an XML document. This identifier is referenced by
+                rollSizeRef elements.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:element name="rollSizeRef" type="xsd:IDREF">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reference to a roll size element in an XML document.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:attribute name="sheetSizeId" type="xsd:ID">
+        <xsd:annotation>
+            <xsd:documentation>
+                The identifier of a sheet size element in an XML document. This identifier is referenced by
+                sheetSizeRef, portraitSheetSizeRefs, and landscapeSheetSizeRefs elements.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+
+    <xsd:element name="sheetSizeRef" type="xsd:IDREF">
+        <xsd:annotation>
+            <xsd:documentation>
+                The reference to a sheet size element in an XML document.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="portraitSheetSizeRefs" type="xsd:IDREFS">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of references to sheet size elements in an XML document. These sheet sizes are cut portrait
+                in a roll.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="landscapeSheetSizeRefs" type="xsd:IDREFS">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of references to sheet size elements in an XML document. These sheet sizes are cut landscape
+                in a roll.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

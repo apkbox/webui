@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of marker feeder states -->
+    <xsd:simpleType name="MarkerFeederStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The list of well known states for a marker feeder unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="NotPresent">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The marker feeder unit is not present on the print device.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Empty">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The marker feeder unit is present on the print device, and is empty.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="AlmostEmpty">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The marker feeder unit is present on the print device, and is almost empty.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Loaded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The marker feeder unit is present on the print device, and is loaded with enough marker supply.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

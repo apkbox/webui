@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="FoldPrograms.xsd"/>
+    <xsd:include schemaLocation="FolderHardwareOptions.xsd"/>
+
+    <!-- processing supported by a finisher unit -->
+    <xsd:complexType name="FinisherProcessingSupported">
+        <xsd:annotation>
+            <xsd:documentation>
+                The processing supported by a finisher unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:foldPrograms" minOccurs="0"/>
+            <xsd:element ref="tns:folderHardwareOptions" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="finisherProcessingSupported" type="tns:FinisherProcessingSupported"/>
+
+</xsd:schema>

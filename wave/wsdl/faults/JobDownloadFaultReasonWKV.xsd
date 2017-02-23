@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/faults"
+            xmlns:tns="http://schemas.oce.com/ws/wave/faults"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- enumeration of Well Known Values for the job download fault reason -->
+    <xsd:simpleType name="JobDownloadFaultReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known reasons why a job download operation has failed.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            
+            <xsd:enumeration value="JobNotFound">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The specified job could not be found.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="JobNotEligibleForDownload">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The specified job is not eligible for a download.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="DownloadSessionNotFound">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The specified job download session could not be found.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="JobDownloadCompleted">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job has been entirely downloaded.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="JobDownloadAborted">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job download has been aborted by the imaging system.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="ClientMustEnableMTOM">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The service requester must enable MTOM to download the job.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="DataTransferInProgress">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The operation was denied because document data are being transferred.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="DataTransferError">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        An error has occurred during the transfer of document data.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The job submission operation was denied for another reason.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

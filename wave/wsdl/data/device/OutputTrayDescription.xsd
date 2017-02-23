@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:resource="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../resource/ResourceElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/resource"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="OutputTrayTypeWKV.xsd"/>
+
+    <!-- description of an output tray -->
+    <xsd:complexType name="OutputTrayDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of an output tray description.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:outputTrayName"/>
+            <xsd:element ref="tns:outputTrayType"/>
+            <xsd:element ref="tns:outputTrayOrdinalNumber" minOccurs="0"/>
+            <xsd:element ref="tns:mediaTypeSupported"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="outputTrayDescription" type="tns:OutputTrayDescription"/>
+
+    <xsd:element name="outputTrayName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of an output tray, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="outputTrayType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The type of the output tray.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:OutputTrayTypeWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="outputTrayOrdinalNumber" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The 1-based ordinal number of an output tray, in the list of output trays of the same type. For
+                instance Stacker#1, Stacker#2, etc..
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType name="MediaTypeSupported">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of supported media types.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="resource:mediaTypeKey" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="mediaTypeSupported" type="tns:MediaTypeSupported"/>
+
+</xsd:schema>

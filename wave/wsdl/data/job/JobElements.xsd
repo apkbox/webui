@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:resource="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- imports required by this schema -->
+    <xsd:import schemaLocation="../resource/ResourceElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/resource"/>
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="JobOriginWKV.xsd"/>
+    <xsd:include schemaLocation="JobDescription.xsd"/>
+    <xsd:include schemaLocation="JobStatus.xsd"/>
+    <xsd:include schemaLocation="DocumentDescription.xsd"/>
+
+    <!-- other includes required by client schemas  -->
+    <xsd:include schemaLocation="JobTicket.xsd"/>
+    <xsd:include schemaLocation="JobIdentification.xsd"/>
+    <xsd:include schemaLocation="JobProcessing.xsd"/>
+    <xsd:include schemaLocation="JobAccounting.xsd"/>
+    <xsd:include schemaLocation="DocumentTicket.xsd"/>
+    <xsd:include schemaLocation="DocumentFormatWKV.xsd"/>
+    <xsd:include schemaLocation="DocumentProcessing.xsd"/>
+    <xsd:include schemaLocation="PageTicket.xsd"/>
+    <xsd:include schemaLocation="PageProcessing.xsd"/>
+    <xsd:include schemaLocation="JobTransfer.xsd"/>
+
+    <!-- a generic job -->
+    <xsd:complexType abstract="true" name="Job">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:jobDescription" minOccurs="0"/>
+            <xsd:element ref="tns:jobStatus" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute ref="tns:jobId" use="required"/>
+    </xsd:complexType>
+
+    <!-- a print job -->
+    <xsd:complexType name="PrintJob">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a print job. A print job can be present in a printer queue, in a waiting room, or in an
+                historic.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:Job">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="printJob" type="tns:PrintJob"/>
+
+    <!-- a scan job -->
+    <xsd:complexType name="ScanJob">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a scan job. A scan job can be present in a scanner queue, or in an historic.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:Job">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="scanJob" type="tns:ScanJob"/>
+
+    <!-- a list of print jobs -->
+    <xsd:complexType name="PrintJobs">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of print jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printJob" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="printJobs" type="tns:PrintJobs"/>
+
+    <!-- a list of scan jobs -->
+    <xsd:complexType name="ScanJobs">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of scan jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:scanJob" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="scanJobs" type="tns:ScanJobs"/>
+
+    <!-- a document -->
+    <xsd:complexType name="Document">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a document. A document is an artwork, either in hardcopy or digital form, and is
+                enclosed in a job.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:documentDescription" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="document" type="tns:Document"/>
+
+    <!-- a list of documents -->
+    <xsd:complexType name="Documents">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of documents.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:document" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="documents" type="tns:Documents"/>
+    
+    <xsd:element name="documentCount" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The total number of documents in a job.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="documentNumber" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The number of a document in a job, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>
+

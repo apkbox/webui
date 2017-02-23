@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MarkerFeederTypeWKV.xsd"/>
+
+    <!-- description of a marker feeder unit -->
+    <xsd:complexType name="MarkerFeederDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The description of a marker feeder.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:markerFeederType"/>
+            <xsd:element ref="tns:markerFeederInfo"/>
+            <xsd:element ref="tns:markerFeederCapacity" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="markerFeederDescription" type="tns:MarkerFeederDescription"/>
+
+    <xsd:element name="markerFeederType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The type of the marker feeder unit. A marker feeder unit can contain solid or liquid marker supply.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:MarkerFeederTypeWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="markerFeederInfo" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                Some textual information about a marker feeder unit, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="markerFeederCapacity" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The capacity of a marker feed unit, in gr if it contains some solid marker supply, or in ml if it
+                contains some liquid marker supply.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

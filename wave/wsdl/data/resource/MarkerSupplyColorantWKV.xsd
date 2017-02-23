@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <!-- enumeration of marker supply colorants -->
+    <xsd:simpleType name="MarkerSupplyColorantWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The enumeration of well known values for the colorants of marker supplies
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="Cyan">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The cyan colorant
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Magenta">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The magenta colorant
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Yellow">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The yellow colorant
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Black">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The black colorant
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="White">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The white colorant
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Varnish">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The varnish colorant
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="LightMagenta">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The light magenta colorant
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="LightCyan">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The light cyan colorant
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        An other colorant
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
+

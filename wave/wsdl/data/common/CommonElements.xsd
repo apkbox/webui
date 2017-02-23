@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/common"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/common"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.2">
+
+    <!-- a general purpose key-value pair of information -->
+    <xsd:complexType name="KeyValuePair">
+        <xsd:annotation>
+            <xsd:documentation>
+                A key-value pair of information.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="name" type="xsd:NMTOKEN" use="required"/>
+        <xsd:attribute name="value" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <!-- scope of reported elements -->
+    <xsd:simpleType name="ReportedElements">
+        <xsd:annotation>
+            <xsd:documentation>
+                The scope of reported elements.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:union memberTypes="tns:ReportedElementsWKV xsd:NMTOKEN"/>
+    </xsd:simpleType>
+    <xsd:attribute name="reportedElements" type="tns:ReportedElements"/>
+
+    <!-- well known values for the scope of reported elements -->
+    <xsd:simpleType name="ReportedElementsWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values for the scope of reported elements.
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:restriction base="xsd:NMTOKEN">
+
+            <xsd:enumeration value="All">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        All the elements of a collection are reported.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Updated">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Only the updated elements of a collection are reported.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="None">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The elements of a collection are not reported.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

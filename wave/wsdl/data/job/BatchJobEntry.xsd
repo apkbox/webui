@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.4">
+
+    <!-- imports required by this schema -->
+    <xsd:include schemaLocation="JobElements.xsd"/>
+    <xsd:include schemaLocation="JobIdentification.xsd"/>
+
+    <!-- a list of batch containers with their respective members -->
+    <xsd:complexType name="BatchJobs">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of batch job containers.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:batchJobEntry" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="batchJobs" type="tns:BatchJobs"/>
+
+    <!-- a batch job entry -->
+    <xsd:complexType name="BatchJobEntry">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a batch entry.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:batchJobMemberEntry" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute ref="tns:jobId" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="batchJobEntry" type="tns:BatchJobEntry"/>
+
+    <!-- a batch job member entry -->
+    <xsd:complexType name="BatchJobMemberEntry">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a batch job member entry.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printJob"/>
+        </xsd:sequence>
+        <xsd:attribute ref="tns:jobRank" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="batchJobMemberEntry" type="tns:BatchJobMemberEntry"/>
+
+    <xsd:element name="jobRank" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The rank of a job within batch job, 1-based.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:attribute name="jobRank" type="xsd:int"/>
+
+</xsd:schema>

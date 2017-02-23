@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/services/job/download"
+            xmlns:tns="http://schemas.oce.com/ws/wave/services/job/download"
+            xmlns:client="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:job="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:device="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:repository="http://schemas.oce.com/ws/wave/data/repository"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:import schemaLocation="../../../data/client/ClientElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/client"/>
+
+    <xsd:import schemaLocation="../../../data/job/JobElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/job"/>
+
+    <xsd:import schemaLocation="../../../data/device/DeviceElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/device"/>
+
+    <xsd:import schemaLocation="../../../data/repository/RepositoryElements.xsd"
+                namespace="http://schemas.oce.com/ws/wave/data/repository"/>
+
+    <!-- lookup job -->
+    <xsd:complexType name="LookupJobRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to lookup a job in the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobClientReference"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="lookupJobRequest" type="tns:LookupJobRequest"/>
+
+    <xsd:complexType name="LookupJobResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response containing the jobs matching the lookup criteria.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="device:scheduledPrintJobs"/>
+            <xsd:element ref="device:unscheduledPrintJobs"/>
+            <xsd:element ref="repository:jobRepositoryEntries"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="lookupJobResponse" type="tns:LookupJobResponse"/>
+
+    <!-- open job download session -->
+    <xsd:complexType name="OpenJobDownloadSessionRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to open a job download session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="openJobDownloadSessionRequest" type="tns:OpenJobDownloadSessionRequest"/>
+
+    <xsd:complexType name="OpenJobDownloadSessionResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the open-job-download-session request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:jobDownloadUri"/>
+            <xsd:element ref="job:documentCount" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="openJobDownloadSessionResponse" type="tns:OpenJobDownloadSessionResponse"/>
+
+    <!-- push document data -->
+    <xsd:complexType name="PullDocumentDataRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to pull document data from the imaging system.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobDownloadUri"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="pullDocumentDataRequest" type="tns:PullDocumentDataRequest"/>
+
+    <xsd:complexType name="PullDocumentDataResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the pull-document-data request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:documentName"/>
+            <xsd:element ref="job:documentFormat"/>
+            <xsd:element ref="job:documentData"/>
+            <xsd:element ref="job:documentOctetsSent" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="pullDocumentDataResponse" type="tns:PullDocumentDataResponse"/>
+
+    <!-- report delivery of a document -->
+    <xsd:complexType name="PullDocumentDataDeliveredRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request used to notify the service provider that a document has been delivered.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobDownloadUri"/>
+            <xsd:element ref="job:documentOctetsReceived"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="pullDocumentDataDeliveredRequest" type="tns:PullDocumentDataDeliveredRequest"/>
+
+    <xsd:complexType name="PullDocumentDataDeliveredResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the pull-document-data-delivered request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="job:documentOctetsSent"/>
+            <xsd:element ref="job:documentNumber"/>
+            <xsd:element ref="job:documentCount" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="pullDocumentDataDeliveredResponse" type="tns:PullDocumentDataDeliveredResponse"/>
+
+    <!-- close job download session -->
+    <xsd:complexType name="CloseJobDownloadSessionRequest">
+        <xsd:annotation>
+            <xsd:documentation>
+                The request to close a job download session.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="client:clientSessionHandle"/>
+            <xsd:element ref="job:jobDownloadUri"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="closeJobDownloadSessionRequest" type="tns:CloseJobDownloadSessionRequest"/>
+
+    <xsd:complexType name="CloseJobDownloadSessionResponse">
+        <xsd:annotation>
+            <xsd:documentation>
+                The response to the close-job-download-session request.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="closeJobDownloadSessionResponse" type="tns:CloseJobDownloadSessionResponse"/>
+
+</xsd:schema>
+
+

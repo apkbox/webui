@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/client"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- the states of a client session -->
+    <xsd:simpleType name="SessionStateWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values for the client session state.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="Opened">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The client session is opened.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Closing">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The client session is closing.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="SystemInError">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is in error. It must be rebooted.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- the state reasons of a client session -->
+    <xsd:simpleType name="SessionClosingReasonWKV">
+        <xsd:annotation>
+            <xsd:documentation>
+                The well known values for the client session closing reason.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:NMTOKEN">
+            
+            <xsd:enumeration value="ShuttingDown">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is shutting down.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="Rebooting">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is rebooting.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+            <xsd:enumeration value="RebootingForUpgrade">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is rebooting for an upgrade of its firmware.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="GoingToSleep">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is going to sleep (ACPI S3).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+
+            <xsd:enumeration value="Other">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        The imaging system is requiring the closure of the client session for another reason.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

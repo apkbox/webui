@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="PrinterStateWKV.xsd"/>
+
+    <!-- status of a printer -->
+    <xsd:complexType name="PrinterStatus">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a printer status.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printerIsAcceptingJobs"/>
+            <xsd:element ref="tns:printerState"/>
+            <xsd:element ref="tns:printerStateReasons"/>
+            <xsd:element ref="tns:printerUpTime"/>
+            <xsd:element ref="tns:printerCurrentTime"/>
+            <xsd:element ref="tns:queuedJobCount"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="printerStatus" type="tns:PrinterStatus"/>
+
+    <!-- a list of printer state reasons -->
+    <xsd:complexType name="PrinterStateReasons">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of printer state reasons.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:printerStateReason" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="printerStateReasons" type="tns:PrinterStateReasons"/>
+
+    <xsd:element name="printerIsAcceptingJobs" type="xsd:boolean">
+        <xsd:annotation>
+            <xsd:documentation>
+                Whether a printer is accepting jobs.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="printerState">
+        <xsd:annotation>
+            <xsd:documentation>
+                The state of a printer.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:PrinterStateWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="printerStateReason">
+        <xsd:annotation>
+            <xsd:documentation>
+                A reason for a printer state.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:PrinterStateReasonWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="printerUpTime" type="xsd:dateTime">
+        <xsd:annotation>
+            <xsd:documentation>
+                The date and time when a printer has been powered up.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="printerCurrentTime" type="xsd:dateTime">
+        <xsd:annotation>
+            <xsd:documentation>
+                The current date and time on a printer.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="queuedJobCount" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The number of jobs present in the printer queue.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

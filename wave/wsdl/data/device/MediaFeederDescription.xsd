@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/device"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- includes required by this schema -->
+    <xsd:include schemaLocation="MediaFeederTypeWKV.xsd"/>
+
+    <!-- description of a media feeder -->
+    <xsd:complexType name="MediaFeederDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a media feeder description.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaFeederType"/>
+            <xsd:element ref="tns:mediaFeederInfo"/>
+            <xsd:element ref="tns:mediaFeederCapacity" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="mediaFeederDescription" type="tns:MediaFeederDescription"/>
+
+    <xsd:element name="mediaFeederType">
+        <xsd:annotation>
+            <xsd:documentation>
+                The type of the media feeder unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+            <xsd:union memberTypes="xsd:NMTOKEN tns:MediaFeederTypeWKV"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+    <xsd:element name="mediaFeederInfo" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                Some textual information about a media feeder, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaFeederCapacity" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The capacity of a media feeder, in meters if the media feeder is a continuous roll feeder,
+                or in number of sheets if the media feeder is a cut sheet feeder.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

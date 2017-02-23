@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/resource"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <!-- description of a media type -->
+    <xsd:complexType name="MediaTypeDescription">
+        <xsd:annotation>
+            <xsd:documentation>
+                The elements of a media type description.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="tns:mediaTypeName"/>
+            <xsd:element ref="tns:mediaMaterial" minOccurs="0"/>
+            <xsd:element ref="tns:mediaWeight" minOccurs="0"/>
+            <xsd:element ref="tns:mediaThickness" minOccurs="0"/>
+            <xsd:element ref="tns:mediaColor" minOccurs="0"/>
+            <xsd:element ref="tns:mediaFrontCoating" minOccurs="0"/>
+            <xsd:element ref="tns:mediaBackCoating" minOccurs="0"/>
+            <xsd:element ref="tns:mediaTypeKey"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="mediaTypeDescription" type="tns:MediaTypeDescription"/>
+
+    <xsd:element name="mediaTypeName" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The name of the media type, as it is meant to be displayed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaMaterial" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The material composing a media type, like paper, polyester, etc...
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaWeight" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The weight of a media type, in gr per square meter.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaThickness" type="xsd:int">
+        <xsd:annotation>
+            <xsd:documentation>
+                The thickness of a media type, in 1/100 mm.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaColor" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The color of a media type.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaFrontCoating" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The front coating of a media type.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaBackCoating" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>
+                The back coating of a media type.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="mediaTypeKey" type="xsd:NMTOKEN">
+        <xsd:annotation>
+            <xsd:documentation>
+                The key of the media type. It can be used as an alias to a media type in a processing instruction.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema targetNamespace="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:tns="http://schemas.oce.com/ws/wave/data/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <xsd:element name="documentData" type="xsd:base64Binary" xmime:expectedContentTypes="application/octet-stream">
+        <xsd:annotation>
+            <xsd:documentation>
+                The data of a document, either transferred in binary as an attachment (MTOM), or using a base64
+                encoding if MTOM is not supported.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="documentOctetsSent" type="xsd:long">
+        <xsd:annotation>
+            <xsd:documentation>
+                The number of document data octets that have been sent.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="documentOctetsReceived" type="xsd:long">
+        <xsd:annotation>
+            <xsd:documentation>
+                The number of document data octets that have been received.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="jobOctetsSent" type="xsd:long">
+        <xsd:annotation>
+            <xsd:documentation>
+                The number of job data octets that have been sent.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="documentApproved" type="xsd:boolean">
+        <xsd:annotation>
+            <xsd:documentation>
+                Whether the document is approved by the service requester. An approved document can be printed.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="documentDelivered" type="xsd:boolean">
+        <xsd:annotation>
+            <xsd:documentation>
+                Whether the document has been delivered.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="jobCompositionUri" type="xsd:anyURI">
+        <xsd:annotation>
+            <xsd:documentation>
+                The URI of a job composition session; this URI is unique.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="jobDownloadUri" type="xsd:anyURI">
+        <xsd:annotation>
+            <xsd:documentation>
+                The URI of a job download session; this URI is unique.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+</xsd:schema>
