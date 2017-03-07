@@ -69,25 +69,38 @@ app.use('/eip/wave/', express.static(path.join(__dirname, '/wave/wsdl'),
 var wsrouter = express.Router();
 app.use(wsrouter);
 
+if (1) {
+  var wave = require('./wave.js');
+  wave.SetupWaveService(wsrouter, 
+                        'wave/wsdl/SystemService.wsdl',
+                        { SystemService: wave.SystemService },
+                        '/eip/wave/SystemService');
+
+  wave.SetupWaveService(wsrouter,
+                        'wave/wsdl/ClientSessionManagementService.wsdl',
+                        { ClientSessionManagementService: wave.ClientSessionManagementService },
+                        '/eip/wave/ClientSessionManagementService');
+}
+else {
 // Prepare soap.
 var xml = require('fs').readFileSync(path.join(__dirname, 'wave/wsdl/SystemService.wsdl'), 'utf8');
 var soap_server = soap.listen(wsrouter, {
-    path: '/eip/wave/SystemService/',
+    path: '/eip/wave/SystemService',
     services: { 
         SystemService: {
           SystemPort: {
-            getSystemElements: function(args) {
+            getSystemElements: function(args, cb, headers, req) {
               return { 
                 imagingSystem: {
                   devices: { 
                     printerDevice: {
                       printDeviceDescription: {
-                        deviceModel: "oce-arizona-2280xt",
-                        deviceMakeAndModel: "Oce Arizona 2280 XT",
+                        deviceModel: req.az.ProductInfoInterface.getProductInfo().getModel(),
+                        deviceMakeAndModel: req.az.ProductInfoInterface.getProductInfo().getMakeAndModel(),
                         deviceVersion: "1.0",
                         deviceUriSupported: [
-                          "http://localhost/eip/wave/SystemService/",
-                          "http://localhost/eip/wave/PrinterMonitoringService/"
+                          "http://localhost/eip/wave/SystemService",
+                          "http://localhost/eip/wave/PrinterMonitoringService"
                         ]
                       }
                     }
@@ -101,15 +114,13 @@ var soap_server = soap.listen(wsrouter, {
         } 
     },
     xml: xml,
-    // By passing os path, we make WSDL readout faster as there is no need
-    // to do referred documents retrieveal through HTTP.
     uri: 'http://localhost/eip/wave/'});
-    //uri: path.join(__dirname, 'wave/wsdl/') });
 
 // SOAP logging
 soap_server.log = function(type, data) {
     console.log(JSON.stringify(type) + "\n" + JSON.stringify(data));
 };
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
