@@ -1,4 +1,4 @@
-process.env.DEBUG='express:* node-soap node app.js';
+process.env.DEBUG='express:* node app.js';
 process.env.PORT=80
 
 var express = require('express');
@@ -43,6 +43,16 @@ app.post('/upload', function(req, res) {
   //});
 });
 
+app.get('/backchannel/:fn/', function(req, res) {
+  if (req.params.fn == 'get-packages') {
+    var u = req.az.SoftwareUpdateInterface.getAvailablePackages();
+    var files = u.list();
+    res.status(200).json(files);
+  } else {
+    res.status(404).send('Not found');
+  }
+});
+
 // Allow to retrieve the WSDL and schema through HTTP.
 // The main purpose of this route is to retrieve dependent
 // schema documents as WSDL itself is served by node-soap.
@@ -67,9 +77,8 @@ app.use('/eip/wave/', express.static(path.join(__dirname, '/wave/wsdl'),
 // soap inserts WSDL route into the router, which in turn already placed
 // before 404.
 var wsrouter = express.Router();
-app.use(wsrouter);
-
-if (1) {
+if (false && wsrouter) {
+  app.use(wsrouter);
   var wave = require('./wave.js');
   wave.SetupWaveService(wsrouter, 
                         'wave/wsdl/SystemService.wsdl',
@@ -80,46 +89,6 @@ if (1) {
                         'wave/wsdl/ClientSessionManagementService.wsdl',
                         { ClientSessionManagementService: wave.ClientSessionManagementService },
                         '/eip/wave/ClientSessionManagementService');
-}
-else {
-// Prepare soap.
-var xml = require('fs').readFileSync(path.join(__dirname, 'wave/wsdl/SystemService.wsdl'), 'utf8');
-var soap_server = soap.listen(wsrouter, {
-    path: '/eip/wave/SystemService',
-    services: { 
-        SystemService: {
-          SystemPort: {
-            getSystemElements: function(args, cb, headers, req) {
-              return { 
-                imagingSystem: {
-                  devices: { 
-                    printerDevice: {
-                      printDeviceDescription: {
-                        deviceModel: req.az.ProductInfoInterface.getProductInfo().getModel(),
-                        deviceMakeAndModel: req.az.ProductInfoInterface.getProductInfo().getMakeAndModel(),
-                        deviceVersion: "1.0",
-                        deviceUriSupported: [
-                          "http://localhost/eip/wave/SystemService",
-                          "http://localhost/eip/wave/PrinterMonitoringService"
-                        ]
-                      }
-                    }
-                  },
-                  services: 1,
-                  systemStatus: 1,
-                }
-              };
-            }
-          }
-        } 
-    },
-    xml: xml,
-    uri: 'http://localhost/eip/wave/'});
-
-// SOAP logging
-soap_server.log = function(type, data) {
-    console.log(JSON.stringify(type) + "\n" + JSON.stringify(data));
-};
 }
 
 // view engine setup
