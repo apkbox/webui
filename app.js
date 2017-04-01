@@ -17,6 +17,9 @@ var users = require('./routes/users');
 
 var app = express();
 
+var compression = require('compression');
+app.use(compression());
+
 // Make Arizona API accessible to our router
 app.use(function(req,res,next){
     req.az = az;

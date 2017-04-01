@@ -14,6 +14,7 @@
     "pug": "~2.0.0-beta10",
     "serve-favicon": "~2.3.2",
     "express-fileupload": "~0.1.1",
-    "soap": "~0.18.0"
+    "soap": "~0.18.0",
+    "compression": "~1.6.2"
   }
 }
