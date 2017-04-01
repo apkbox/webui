@@ -41,6 +41,7 @@ app.post('/upload', function(req, res) {
 
   //  res.send('File uploaded!');
   //});
+  res.send(sampleFile);
 });
 
 app.get('/backchannel/:fn/', function(req, res) {

@@ -15,7 +15,7 @@ html
     div(style='width: 960px; margin-left: auto; margin-right: auto')
       div.header
         div.header-printer-model= computer_name
-      div#container
+      div#container(style='display: none')
         ul#menu
           li
             a#idHomeLink(href='#idHomePage')
@@ -35,19 +35,12 @@ html
           p Serial number: #{serial_number}
           p Status: N/A
         div#idUpdateSoftwarePage
-          p Update software
+          div#upload-status(style='display: none')
+          div#idProgress(style="display: none")
           input#uploadSoftware(type="file" name="file")
-          table(border=1)
-            tr
-              th Update package
-              th Version
-            //- condition to make Pug to HTML happy
-            if available_packages
-              each e in available_packages
-                tr
-                  td=e.getFileName()
-                  td=e.getVersion()
-          div#rest
+          div#package-error
+            | Communication error!
+          table#packages(border=1)
         div#idDownloadSettingsPage
           p Download settings
         div#idDownloadLogsPage
@@ -56,36 +49,65 @@ html
       function loadData() {
         $.getJSON('/backchannel/get-packages')
         .done(function(data) {
-          $('#rest').text(data);
+          var s = '<tr><th>Package</th><th>Version</th></tr>';
+          for (var i = 0; i < data.length; i++) {
+            s += '<tr><td>' + data[i]['name_'] +
+                '</td><td>' + data[i]['version_'] +
+                '</td></tr>';
+          }
+          $('#package-error').hide();
+          $('#packages').html(s);
         })
         .fail(function() {
-          $('#rest').text('Communication error!');
+          $('#package-error').show();
+          $('#packages').html('');
         })
         .always(function() { setTimeout(loadData, 10000); });
       }
+
       function render() {
         $('#container').tabs();
-        $('input#uploadSoftware[type=file]').change(function() {
+        $('input#uploadSoftware').change(function() {
           $(this).simpleUpload("/upload", {
               start: function(file) {
                 //upload started
                 console.log("upload started");
+                $('#upload-status').hide();
+                $('input#uploadSoftware').hide();
+                $('#idProgress').progressbar({value: 0, max: 100}).show();
               },
               progress: function(progress) {
                 //received progress
                 console.log("upload progress: " + Math.round(progress) + "%");
+                if (progress >= 100)
+                  $('#idProgress').progressbar({value: false});
+                else
+                  $('#idProgress').progressbar({value: progress, max: 100});
               },
               success: function(data) {
                 //upload successful
                 console.log("upload successful!");
                 console.log(data);
+                $('#upload-status')
+                    .removeClass('upload-status-error')
+                    .addClass('upload-status-succeess')
+                    .text(data.name + ' Uploaded.').show();
+                $('#idProgress').hide();
+                $('input#uploadSoftware').show();
               },
               error: function(error) {
                 //upload failed
                 console.log("upload error: " + error.name + ": " + error.message);
-                }
+                $('#upload-status')
+                    .removeClass('upload-status-succeess')
+                    .addClass('upload-status-error')
+                    .text('Upload failed.').show();
+                $('#idProgress').hide();
+                $('input#uploadSoftware').show();
+              }
           });
         });
+        $('#container').show();
         loadData();
       }
 

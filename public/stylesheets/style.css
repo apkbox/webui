@@ -6,6 +6,19 @@ h1 {
 	font-size: 2.0em;
 }
 
+.upload-status-error {
+	border: solid 1px red;
+	background: lightyellow;
+	padding: 10px;
+	color: red;
+}
+
+.upload-status-succeess {
+	border: solid 1px green;
+	background: lightgreen;
+	padding: 10px;
+	color: green;
+}
 
 .file-list {
 	min-width: 50%;
